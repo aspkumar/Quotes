@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Quotes</string>
+    <string-array name="categories">
+        <item>Self-Confidence</item>
+        <item>Strenght is Life</item>
+        <item>Be Fearless</item>
+        <item>Strenght of Character</item>
+        <item>Self-Responsibility</item>
+        <item>Positive Thinking</item>
+        <item>Control of Mind</item>
+        <item>Power of Concentration</item>
+        <item>Power of Thought</item>
+        <item>Art of Meditation</item>
+        <item>Manifest Your Divinity</item>
+        <item>True Education</item>
+        <item>True Worship</item>
+        <item>Secret of Work</item>
+        <item>Call To The Youth</item>
+        <item>Eternal India</item>
+        <item>Universal Religion</item>
+        <item>Sri Ramakrishna</item>
+        <item>Sri Sarada Devi</item>
+        <item>Other Exhortations</item>
+        <item>Universal Prayers</item>
+    </string-array>
+
+    <string-array name="selfconfidencearray">
+        <item>He is an atheist who does not believe in himself. The old religions said that he was an atheist who did not believe in God. The new religion says that he is an atheist who does not believe in himself. </item>
+        <item>The ideal of faith in ourselves is of the greatest help to us.</item>
+        <item>Faith,faith,faith in ourselves,faith,faith in God—this is the secret of greatness. If you have faith in all the three hundred and thirty millions of your mythological gods,and in all the gods which foreigners have now and again introduced into your midst,and still have no faith in yourselves,there is no salvation for you.</item>
+    </string-array>
+    <string-array name="strengthislifearray">
+        <item>fasdf</item>
+        <item>dsfddsfds</item>
+        <item>dsfddsfds</item>
+        <item>dsfddsfds</item>
+        <item>dsfddsfds</item>
+        <item>dsfddsfds</item>
+
+    </string-array>
+</resources>
