@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".QuotesListActivity"/>
-        <activity android:name=".ScreenSlideActivity"/>
+        <activity android:name=".allquotes.VPTMain" />
+        <activity android:name=".QuotesListActivity" />
+        <activity android:name=".ScreenSlideActivity" />
     </application>
 
 </manifest>

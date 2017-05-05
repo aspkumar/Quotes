@@ -26,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quotes"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:id="@+id/all_quotes_TV"/>
         </LinearLayout>
 
         <LinearLayout

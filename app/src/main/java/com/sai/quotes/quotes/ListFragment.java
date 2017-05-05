@@ -21,8 +21,8 @@ public class ListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_list_fragment, null);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_fragment);
+        View view = inflater.inflate(R.layout.tab1, null);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_viewtab1);
         strings = getResources().getStringArray(R.array.categories);
         AdapaterListsFragment adapaterListsFragment = new AdapaterListsFragment(getActivity(), strings);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());

@@ -1,5 +1,6 @@
 package com.sai.quotes.quotes;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,6 +22,8 @@ public class QuotesListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotes_list);
+
+
         Intent intent = getIntent();
         itemClicked = intent.getStringExtra("clickedcategory");
         if (itemClicked.equals("Self-Confidence")) {
