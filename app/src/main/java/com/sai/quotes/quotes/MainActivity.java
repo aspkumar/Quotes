@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 import com.sai.quotes.quotes.allquotes.VPTMain;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView categories;
     FrameLayout frameLayoutFragment;
     LinearLayout layer;
@@ -48,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
     public void onBackPressed() {
         layer.setVisibility(View.VISIBLE);
         frameLayoutFragment.setVisibility(View.INVISIBLE);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

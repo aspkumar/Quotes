@@ -40,14 +40,16 @@ class AdapaterListsFragment extends RecyclerView.Adapter<AdapaterListsFragment.M
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.conents_TV.setText(array[position]);
-        final String clicledtext= (String) holder.conents_TV.getText();
+        String clicledtext= (String) holder.conents_TV.getText();
+        clicledtext=clicledtext.replace(" ","");
+        final String finalClicledtext = clicledtext;
         holder.conents_TV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent quotesintent=new Intent(context,QuotesListActivity.class);
-                quotesintent.putExtra("clickedcategory",clicledtext);
+                quotesintent.putExtra("clickedcategory", finalClicledtext);
                 context.startActivity(quotesintent);
             }
         });

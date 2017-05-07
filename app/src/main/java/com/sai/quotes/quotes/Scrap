@@ -1,0 +1,22 @@
+ <!-- our toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:title="asdfsadfsdaa"
+        android:titleTextColor="@color/dark_gray"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <include layout="@layout/control_toolbar"
+        android:id="@+id/control_toolbar"/>
+
+
+        // to draws vertical linies between views
+          <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black"
+                    android:layout_toRightOf="@+id/text_inc_dec_icon"
+                    />

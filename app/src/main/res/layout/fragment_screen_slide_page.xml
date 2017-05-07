@@ -15,94 +15,134 @@
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
 
     <!-- Dummy content. -->
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:title="asdfsadfsdaa"
+            android:titleTextColor="@color/dark_gray"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <include
+            android:id="@+id/control_toolbar_fullscreen"
+            layout="@layout/control_toolbar_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar" />
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="256dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/control_toolbar_fullscreen"
+            android:id="@+id/relativeLayout"
+            android:visibility="visible">
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/textval"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sadfsdfsddsfsdfsdfasd"
+                android:id="@+id/textval"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:maxLength="5"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fullscreen_RL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_background"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/relativeLayout">
 
             <TextView
                 android:id="@+id/textView"
-                style="?android:textAppearanceLarge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="sample text"
-                />
+                android:gravity="center_vertical"
+                android:text="sample text" />
 
             <TextView
                 style="?android:textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.2"
-                android:text="lorem_ipsum"
-                android:layout_below="@+id/textView"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView"
+                android:lineSpacingMultiplier="1.2"
+                android:text="lorem_ipsum" />
 
             <Button
                 android:id="@+id/share_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="share"
-                android:layout_below="@+id/icon_red"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/icon_red"
+                android:text="share" />
 
             <ImageView
                 android:id="@+id/icon_red"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/heart_icon_red"
-                android:layout_alignTop="@+id/icon_white"
                 android:layout_alignLeft="@+id/icon_white"
                 android:layout_alignStart="@+id/icon_white"
-                android:visibility="invisible"/>
+                android:layout_alignTop="@+id/icon_white"
+                android:src="@drawable/heart_icon_red"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/icon_white"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/heart_icon_white"
-                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="14dp"
-                android:layout_marginStart="14dp" />
+                android:layout_marginStart="14dp"
+                android:src="@drawable/heart_icon_white" />
 
             <SeekBar
                 android:id="@+id/seekBarDiscrete"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/icon_red"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/icon_red"
                 android:layout_marginBottom="15dp"
                 android:max="10"
-                android:progress="1"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignLeft="@+id/icon_red"
-                android:layout_alignStart="@+id/icon_red" />
+                android:progress="1" />
 
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/seekBarDiscrete"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+
 
         </RelativeLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>

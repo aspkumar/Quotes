@@ -24,6 +24,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +43,14 @@ public class ScreenSlidePageFragment extends Fragment {
 
     private ArrayList<String> student;
     private SeekBar seekBar, seekBarDiscrete;
-    TextView quotesLargeTV;
+    TextView quotesLargeTV,textval;
+    View controlsView;
+    ImageView heartWhite, heartRed, shareImg, textSize;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    String selectedarray;
+    int textSizeSP;
+
     /**
      * The argument key for the page number this fragment represents.
      */
@@ -78,8 +86,10 @@ public class ScreenSlidePageFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("mypreference", Context.MODE_PRIVATE);
-        String selectedarray = sharedPreferences.getString("selectedarray", "");
+        sharedPreferences = getContext().getSharedPreferences("mypreference", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        selectedarray = sharedPreferences.getString("selectedarray", "");
+        textSizeSP = sharedPreferences.getInt("textSizeSP", 0);
         selectedarray = selectedarray.replace("[", "");
         selectedarray = selectedarray.replace("]", "");
         selectedarray = selectedarray.replace(".,", ".~");
@@ -97,17 +107,42 @@ public class ScreenSlidePageFragment extends Fragment {
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_screen_slide_page, container, false);
-
-
+        controlsView = rootView.findViewById(R.id.control_toolbar_fullscreen);
+        heartWhite = (ImageView) controlsView.findViewById(R.id.heart_icon_white);
+        heartRed = (ImageView) controlsView.findViewById(R.id.heart_icon_red);
+        shareImg = (ImageView) controlsView.findViewById(R.id.share_icon);
+        textSize = (ImageView) controlsView.findViewById(R.id.text_inc_dec_icon);
         seekBar = (SeekBar) rootView.findViewById(R.id.seekBar);
-        quotesLargeTV= (TextView) rootView.findViewById(R.id.textView);
-        seekBar.setProgress(6);
-        seekBar.setMax(20);
+        quotesLargeTV = (TextView) rootView.findViewById(R.id.textView);
+        textval= (TextView) rootView.findViewById(R.id.textval);
+
+        if (textSizeSP != 0) {
+            quotesLargeTV.setTextSize(textSizeSP);
+            int val=(int) quotesLargeTV.getTextSize();
+
+            seekBar.setProgress(textSizeSP - 10);
+
+            int sl=(int) quotesLargeTV.getTextSize();
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        } else {
+            quotesLargeTV.setTextSize(16);
+            seekBar.setProgress(6);
+            seekBar.setMax(10);
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        }
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
-                quotesLargeTV.setTextSize(progress+10);
+                seekBar.setMax(10);
+                editor.remove("textSizeSP");
+                editor.commit();
+//                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
+                seekBar.setProgress(progress);
+                quotesLargeTV.setTextSize(progress + 15);
+                editor.putInt("textSizeSP", progress + 15);
+                editor.commit();
+                textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
 
             }
 
@@ -129,18 +164,16 @@ public class ScreenSlidePageFragment extends Fragment {
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(selctedarrayitems.get(mPageNumber).toString());
 
         quotesLargeTV.setText(selctedarrayitems.get(mPageNumber).toString());
-        rootView.findViewById(R.id.share_btn).setOnClickListener(new View.OnClickListener() {
+        shareImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, selctedarrayitems.get(mPageNumber).toString() + "\n\r" + "~Swami Vivekananda");
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, selctedarrayitems.get(mPageNumber).toString()));
             }
         });
-
-
         return rootView;
     }
 

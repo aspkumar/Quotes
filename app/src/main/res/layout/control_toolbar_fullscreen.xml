@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/heart_icon_white"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/heart_icon_white"
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/heart_icon_red"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/heart_icon_red"
+            android:visibility="gone"
+            android:padding="3dp"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_share"
+            android:id="@+id/share_icon"
+            android:visibility="visible"
+            android:padding="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/heart_icon_white"
+            android:layout_toStartOf="@+id/heart_icon_white"
+            android:layout_marginRight="20dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_text_inc_dec"
+            android:id="@+id/text_inc_dec_icon"
+            android:layout_alignParentTop="true"
+            android:padding="3dp"
+            android:layout_toLeftOf="@+id/share_icon"
+            android:layout_toStartOf="@+id/share_icon"
+            android:layout_marginRight="20dp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

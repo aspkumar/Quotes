@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:background="#f4eeee">
-<TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/list_quote_itemTV"
-    android:text="asdfsdf"
-    android:maxLines="2"
-    android:textColor="#000"
-    android:textSize="16dp"
-    android:gravity="center"
-    android:layout_toStartOf="@+id/heart_icon_white"
-    android:layout_toLeftOf="@+id/heart_icon_white" />
+    android:background="#f4eeee"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/list_quote_itemTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/heart_icon_white"
+        android:layout_toStartOf="@+id/heart_icon_white"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="asdfsdf"
+        android:textColor="#000"
+        android:textSize="16dp" />
+
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:padding="5dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:id="@+id/heart_icon_white"
-        android:foregroundGravity="center_vertical"
-        android:src="@drawable/heart_icon_white"/>
-    <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:padding="5dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/heart_icon_red"
-        android:src="@drawable/heart_icon_red"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:foregroundGravity="center_vertical"
-        android:visibility="invisible"/>
+        android:padding="5dp"
+        android:src="@drawable/heart_icon_white" />
+
+    <ImageView
+        android:id="@+id/heart_icon_red"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:foregroundGravity="center_vertical"
+        android:padding="5dp"
+        android:src="@drawable/heart_icon_red"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/share_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_share"
+        android:visibility="gone" />
 </RelativeLayout>
