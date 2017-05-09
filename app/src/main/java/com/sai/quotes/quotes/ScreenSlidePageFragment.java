@@ -42,14 +42,13 @@ public class ScreenSlidePageFragment extends Fragment {
 
 
     private ArrayList<String> student;
-    private SeekBar seekBar, seekBarDiscrete;
-    TextView quotesLargeTV,textval;
-    View controlsView;
-    ImageView heartWhite, heartRed, shareImg, textSize;
+    private TextView quotesLargeTV,currentItemValue;
+    private View controlsView;
+    ImageView heartWhite, heartRed, shareImg;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
-    String selectedarray;
-    int textSizeSP;
+    private String selectedarray;
+    private ArrayList<String> favouritearraySP;
 
     /**
      * The argument key for the page number this fragment represents.
@@ -89,7 +88,6 @@ public class ScreenSlidePageFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences("mypreference", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         selectedarray = sharedPreferences.getString("selectedarray", "");
-        textSizeSP = sharedPreferences.getInt("textSizeSP", 0);
         selectedarray = selectedarray.replace("[", "");
         selectedarray = selectedarray.replace("]", "");
         selectedarray = selectedarray.replace(".,", ".~");
@@ -100,9 +98,21 @@ public class ScreenSlidePageFragment extends Fragment {
 
         }
 
+
+        String selectedValue = sharedPreferences.getString("storespValues", "");
+        selectedValue = selectedValue.replace("[", "");
+        selectedValue = selectedValue.replace("]", "");
+        selectedValue = selectedValue.replace(".,", ".~");
+        favouritearraySP = new ArrayList<>();
+
+
+        if (selectedValue != null) {
+            favouritearraySP.addAll(Arrays.asList(selectedValue.split("\\s*~\\s*")));
+        }
+
 //        String[] arraytodisplay=getResources().getStringArray(R.array.arr);
 
-        int a = 1;
+//        int a = 1;
 
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
@@ -111,51 +121,9 @@ public class ScreenSlidePageFragment extends Fragment {
         heartWhite = (ImageView) controlsView.findViewById(R.id.heart_icon_white);
         heartRed = (ImageView) controlsView.findViewById(R.id.heart_icon_red);
         shareImg = (ImageView) controlsView.findViewById(R.id.share_icon);
-        textSize = (ImageView) controlsView.findViewById(R.id.text_inc_dec_icon);
-        seekBar = (SeekBar) rootView.findViewById(R.id.seekBar);
         quotesLargeTV = (TextView) rootView.findViewById(R.id.textView);
-        textval= (TextView) rootView.findViewById(R.id.textval);
+        currentItemValue= (TextView) rootView.findViewById(R.id.current_Item_value);
 
-        if (textSizeSP != 0) {
-            quotesLargeTV.setTextSize(textSizeSP);
-            int val=(int) quotesLargeTV.getTextSize();
-
-            seekBar.setProgress(textSizeSP - 10);
-
-            int sl=(int) quotesLargeTV.getTextSize();
-            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
-        } else {
-            quotesLargeTV.setTextSize(16);
-            seekBar.setProgress(6);
-            seekBar.setMax(10);
-            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
-        }
-
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                seekBar.setMax(10);
-                editor.remove("textSizeSP");
-                editor.commit();
-//                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
-                seekBar.setProgress(progress);
-                quotesLargeTV.setTextSize(progress + 15);
-                editor.putInt("textSizeSP", progress + 15);
-                editor.commit();
-                textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
 
         // Set the title view to show the page number.
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(
@@ -163,7 +131,48 @@ public class ScreenSlidePageFragment extends Fragment {
 
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(selctedarrayitems.get(mPageNumber).toString());
 
-        quotesLargeTV.setText(selctedarrayitems.get(mPageNumber).toString());
+        quotesLargeTV.setText("\""+selctedarrayitems.get(mPageNumber).toString()+"\"");
+        currentItemValue.setText(mPageNumber+1+"/"+String.valueOf(selctedarrayitems.size()));
+
+        final String currentItem=selctedarrayitems.get(mPageNumber).toString();
+
+        //heart image appearNCE and onclick action
+//        holder.quoteItemTV.setText(quotesarray[position]);
+        if (favouritearraySP.contains(currentItem)) {
+
+            heartWhite.setVisibility(View.INVISIBLE);
+            heartRed.setVisibility(View.VISIBLE);
+        } else {
+            heartWhite.setVisibility(View.VISIBLE);
+            heartRed.setVisibility(View.INVISIBLE);
+        }
+
+        heartWhite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                    one.get(position).setId(true);
+                heartWhite.setVisibility(View.INVISIBLE);
+                heartRed.setVisibility(View.VISIBLE);
+                favouritearraySP.add(currentItem);
+                editor.putString("storespValues", favouritearraySP.toString());
+                editor.commit();
+            }
+        });
+
+
+        heartRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                heartWhite.setVisibility(View.VISIBLE);
+                heartRed.setVisibility(View.INVISIBLE);
+                favouritearraySP.remove(currentItem);
+                editor.putString("storespValues", favouritearraySP.toString());
+                editor.commit();
+            }
+        });
+
+
+
         shareImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

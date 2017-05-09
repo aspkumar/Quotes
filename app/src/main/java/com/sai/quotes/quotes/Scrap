@@ -20,3 +20,81 @@
                     android:background="@android:color/black"
                     android:layout_toRightOf="@+id/text_inc_dec_icon"
                     />
+
+
+
+
+
+   ///removed seekbar
+   //fragment_screen_slide_page
+     <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/control_toolbar_fullscreen"
+               android:id="@+id/relativeLayout"
+               android:visibility="visible">
+               <SeekBar
+                   android:id="@+id/seekBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toLeftOf="@+id/textval"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="sadfsdfsddsfsdfsdfasd"
+                   android:id="@+id/textval"
+                   android:gravity="center"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentEnd="true"
+                   android:maxLength="5"/>
+
+           </RelativeLayout>
+
+
+           //screenSlidePagerFragment
+           textSize = (ImageView) controlsView.findViewById(R.id.text_inc_dec_icon);
+                   textval= (TextView) rootView.findViewById(R.id.textval);
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+  if (textSizeSP != 0) {
+            quotesLargeTV.setTextSize(textSizeSP);
+            int val=(int) quotesLargeTV.getTextSize();
+
+            seekBar.setProgress(textSizeSP - 10);
+
+            int sl=(int) quotesLargeTV.getTextSize();
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        } else {
+            quotesLargeTV.setTextSize(16);
+            seekBar.setProgress(6);
+            seekBar.setMax(10);
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        }
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBar.setMax(10);
+                editor.remove("textSizeSP");
+                editor.commit();
+//                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
+                seekBar.setProgress(progress);
+                quotesLargeTV.setTextSize(progress + 15);
+                editor.putInt("textSizeSP", progress + 15);
+                editor.commit();
+                textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });

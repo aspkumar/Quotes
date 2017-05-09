@@ -1,7 +1,9 @@
 package com.sai.quotes.quotes;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -27,6 +30,8 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
     Boolean expandrcollapseval=false;
     View controlView;
     ImageView a2z, z2a, expand, collapse;
+    private ArrayList<String> favouritearraySP;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +53,21 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
         } else if (itemClicked.equalsIgnoreCase("StrenghtisLife")) {
             quotestopass = getResources().getStringArray(R.array.strengthislifearray);
             arrayName = "strengthislifearray";
+        }else if (itemClicked.equalsIgnoreCase("favarray")){
+            SharedPreferences sharedPreferences = getSharedPreferences("mypreference", Context.MODE_PRIVATE);
+            String selectedValue = sharedPreferences.getString("storespValues", "");
+            selectedValue = selectedValue.replace("[", "");
+            selectedValue = selectedValue.replace("]", "");
+            selectedValue = selectedValue.replace(".,", ".~");
+            favouritearraySP = new ArrayList<>();
+
+
+            if (selectedValue != null) {
+                favouritearraySP.addAll(Arrays.asList(selectedValue.split("\\s*~\\s*")));
+            }
+
+
+            quotestopass= (String[]) favouritearraySP.toArray(new String[favouritearraySP.size()]);
         }
 
         controlView = findViewById(R.id.control_toolbar);

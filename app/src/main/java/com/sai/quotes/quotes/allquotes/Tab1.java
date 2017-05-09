@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sai.quotes.quotes.R;
+import com.sai.quotes.quotes.RecyclerAdapterQuotes;
 
 import java.util.ArrayList;
 
@@ -50,8 +51,9 @@ public class Tab1 extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_list_fragment, null);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_fragment);
-        strings = getResources().getStringArray(R.array.categories);
-        RecyclerViewAdapter adapaterListsFragment = new RecyclerViewAdapter(getActivity(), strings);
+        strings = getResources().getStringArray(R.array.onetofiftyarray);
+//        RecyclerViewAdapter adapaterListsFragment = new RecyclerViewAdapter(getActivity(), strings);
+       RecyclerAdapterQuotes adapaterListsFragment=new RecyclerAdapterQuotes(getActivity(),strings,"onetofiftyarray",true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapaterListsFragment);

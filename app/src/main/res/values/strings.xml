@@ -38,4 +38,24 @@
         <item>dsfddsfds.</item>
 
     </string-array>
+
+    <string-array name="onetofiftyarray">
+        <item> look like readable English. Many desktop publishing packages and web page editors .</item>
+        <item>look like readable English. Many desktop .</item>
+        <item>look like readable English. Many dektop.</item>
+        <item>look like readable English. Many desk.</item>
+        <item>look like readable English. Many d.</item>
+        <item>look like English. Many desktop .</item>
+
+    </string-array>
+
+    <string-array name="qodarray">
+        <item> look like top publishing packages and web page editors .</item>
+        <item>look like readableh. Many desktop .</item>
+        <item>look like readabllish. Many dektop.</item>
+        <item>look like read. Many desk.</item>
+        <item>look like readlish. Many d.</item>
+        <item>look like Engany desktop .</item>
+
+    </string-array>
 </resources>

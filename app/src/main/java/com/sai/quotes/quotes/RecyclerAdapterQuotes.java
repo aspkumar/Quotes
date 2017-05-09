@@ -56,10 +56,7 @@ public class RecyclerAdapterQuotes extends RecyclerView.Adapter<RecyclerAdapterQ
 
         if (selectedValue != null) {
             favouritearraySP.addAll(Arrays.asList(selectedValue.split("\\s*~\\s*")));
-
         }
-
-
         return new QuotesVH(itemView);
     }
 
