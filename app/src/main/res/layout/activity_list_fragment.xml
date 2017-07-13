@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/recyclerview_fragment"
-    android:background="#ede1e1"></android.support.v7.widget.RecyclerView>
+    android:orientation="vertical"
+    android:background="@color/mainBackground">
+
+    <include layout="@layout/control_toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_vivekananda_bg"
+        android:alpha="0.5"></android.support.v7.widget.RecyclerView>
 </LinearLayout>

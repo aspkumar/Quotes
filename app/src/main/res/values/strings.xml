@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quotes</string>
+    <string name="app_name">Vivekananda Quotes and Bio</string>
     <string-array name="categories">
         <item>Self-Confidence</item>
         <item>Strenght is Life</item>
@@ -30,12 +30,90 @@
         <item>Faith,faith,faith in ourselves,faith,faith in God—this is the secret of greatness. If you have faith in all the three hundred and thirty millions of your mythological gods,and in all the gods which foreigners have now and again introduced into your midst,and still have no faith in yourselves,there is no salvation for you.</item>
     </string-array>
     <string-array name="strengthislifearray">
-        <item>fasdf</item>
-        <item>dsfddsfds</item>
-        <item>dsfddsfds</item>
-        <item>dsfddsfds</item>
-        <item>dsfddsfds</item>
-        <item>dsfddsfds</item>
+        <item>fasdf.</item>
+        <item>dsfddsfds.</item>
+        <item>dsfddsfds.</item>
+        <item>dsfddsfds.</item>
+        <item>dsfddsfds.</item>
+        <item>dsfddsfds.</item>
 
     </string-array>
+
+    <string-array name="onetofiftyarray">
+        <item>a look like readable English. Many desktop publishing packages and web page editors .</item>
+        <item>dlook like readable English. Many desktop .</item>
+        <item>blook like readable English. Many dektop.</item>
+        <item>clook like readable English. Many desk.</item>
+        <item>gblook like readable English. Many d.</item>
+        <item>jhjlook like English. Many desktop .</item>
+
+    </string-array>
+
+    <string-array name="qodarray">
+        <item>“They alone live who live for others, the rest are more dead than alive.”</item>
+        <item>“In a conflict between the heart and the brain, follow your heart.”</item>
+        <item>“Be not afraid of anything. You will do Marvelous work. It is Fearlessness that brings Heaven even in a moment.”</item>
+        <item>“The great secret of true success, of true happiness, is this: the man or woman who asks for no return, the perfectly unselfish person, is the most successful.”</item>
+        <item>“The greatest religion is to be true to your own nature. Have faith in yourselves.”</item>
+        <item>“We are what our thoughts have made us; so take care about what you think. Words are secondary. Thoughts live; they travel far. ”</item>
+        <item>“Strength is Life, Weakness is Death. Expansion is Life, Contraction is Death. Love is Life, Hatred isDeath.”</item>
+        <item>“Do one thing at a Time, and while doing it put your whole Soul into it to the exclusion of all else.”</item>
+        <item>“Ask nothing; want nothing in return. Give what you have to give; it will come back to you, but do not think of that now.”</item>
+        <item>“We are what our thoughts have made us; so take care about that you think.”</item>
+        <item>“Anything that makes weak - physically, intellectually and spiritually, reject it as poison.”</item>
+        <item>“Whatever you think that you will be. If you think yourself weak, weak you will be; if you think yourself strong, you will be”</item>
+        <item>“Learn Everything that is Good from Others, but bring it in, and in your own way absorb it; do not become others.”</item>
+        <item>“This is a great fact: strength is life; weakness is death. Strength is felicity, life eternal, immortal; weakness is constant strain and misery, weakness is death.”</item>
+        <item>“Each work has to pass through these stages—ridicule, opposition, and then acceptance. Those who think ahead of their time are sure to be misunderstood.”</item>
+        <item>“Man is to become divine by realizing the divine. Idols or temples, or churches or books, are only the supports, the help of his spiritual childhood.”</item>
+        <item>“Blessed are they whose bodies get destroyed in the service of others.”</item>
+        <item>“The cheerful mind perseveres and the strong mind hews its way through a thousand difficulties.”</item>
+        <item>“The brain and muscles must develop simultaneously. Iron nerves with an intelligent brain — and the whole world is at your feet.”</item>
+        <item>“All the powers in the universe are already ours. It is we who have put our hands before our eyes and cry that it is dark.”</item>
+        <item>“A few heart-whole, sincere, and energetic men and women can do more in a year than a mob in a century.”</item>
+        <item>“This attachment of Love to God is indeed one that does not bind the soul but effectively breaks all its bondages.”</item>
+        <item>“Books are infinite in number and time is short. The secret of knowledge is to take what is essential.Take that and try to live up to it.”</item>
+        <item>“Desire, ignorance, and inequality—this is the trinity of bondage.”</item>
+        <item>“Dont look back—forward, infinite energy, infinite enthusiasm, infinite daring, and infinite patience—then alone can great deeds be accomplished.”</item>
+        <item>“The Tapas and the other hard Yogas that were practiced in other Yugas do not work now. What is needed in this Yuga is giving, helping others. ”</item>
+        <item>“Shri Ramakrishna uses to say, "As Long as I Live, so long do I learn". That man or that society which has nothing to learn is already in the jaws of death.”</item>
+        <item>“Our duty is to encourage everyone in his struggle to live up to his own highest idea, and strive at the same time to make the ideal as near as possible to the Truth.”</item>
+        <item>“He is an atheist who does not believe in himself. The old religions said that he was an atheist who did not believe in God. The new religion says that he is an atheist who does not believe in himself.”</item>
+        <item>“The earth is enjoyed by heroes”—this is the unfailing truth. Be a hero. Always say, “I have no fear.”</item>
+        <item>“Take up one idea. Make that one idea your life - think of it, dream of it, and live on that idea. Let the brain, muscles, nerves, every part of your body, be full of that idea, and just leave every other idea alone. This is the way to success.”</item>
+        <item>“By doing well the duty which is nearest to us, the duty which is in our hands, we make ourselves stronger”</item>
+        <item>“Be Grateful to the Man you help, think of Him as God. Is it not a great privilege to be allowed to worship God by helping our fellow men?”</item>
+        <item>“In a day, when you dont come across any problems, you can be sure that you are treveling in a wrong path”</item>
+        <item>“If money help a man to do good to others, it is of some value; but if not, it is simply a mass of evil, and the sooner it is got rid of, the better.”</item>
+        <item>“When an idea exclusively occupies the mind, it is transformed into an actual physical or mental state.”</item>
+        <item>“There is no limit to the power of the human mind. The more concentrated it is, the more power is brought to bear on one point”</item>
+        <item>“Are you unselfish? That is the question. If you are, you will be perfect without reading a single religious book, without going into a single church or temple.”</item>
+        <item>“Even the greatest fool can accomplish a task if it were after his or her heart. But the intelligent ones are those who can convert every work into one that suits their taste.”</item>
+        <item>“Education is the manifestation of perfection already existing in man.”</item>
+        <item>“Tell the truth boldly, whether it hurts or not. Never pander to weakness. If truth is too much for intelligent people and sweeps them away, let them go; the sooner the better.”</item>
+        <item>”This I have seen in life—those who are overcautious about themselves fall into dangers at every step; those who are afraid of losing honor and respect, get only disgrace; and those who are always afraid of loss, always lose. “</item>
+        <item>“Fill the brain with high thoughts, highest ideals, place them day and night before you, and out of that will come great work.”</item>
+        <item>“Who makes us ignorant? We ourselves. We put our hands over our eyes and weep that it is dark.</item>
+        <item>“We must have friendship for all; we must be merciful toward those that are in misery; when people are happy, we ought to be happy; and to the wicked we must be indifferent. These attitudes will make the mind peaceful.”</item>
+        <item>“Great work requires great and persistent effort for a long time. … Character has to be established through a thousand stumbles.”</item>
+        <item>“Watch people do their most common actions; these are indeed the things that will tell you the real character of a great person.”</item>
+        <item>“We came to enjoy; we are being enjoyed. We came to rule; we are being ruled. We came to work; we are being worked. All the time, we find that. And this comes into every detail of our life.”</item>
+        <item>“Stand as a rock; you are indestructible. You are the Self (atman), the God of the universe.”</item>
+        <item>“If there is one word that you find coming out like a bomb from the Upanishads, bursting like a bombshell upon masses of ignorance, it is the word “fearlessness.”</item>
+    </string-array>
+
+
+    <string-array name="picturelinksarray">
+        <item>http://imgh.us/1_4497.jpg</item>
+        <item>http://imgh.us/2_3221.jpg</item>
+        <item>http://imgh.us/3_2663.jpg</item>
+        <item>http://imgh.us/4_2359.jpg</item>
+        <item>http://imgh.us/5_2111.jpg</item>
+        <item>http://imgh.us/6_1911.jpg</item>
+
+    </string-array>
+
+
+
+
 </resources>

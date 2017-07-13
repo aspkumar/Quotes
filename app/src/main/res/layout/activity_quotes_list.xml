@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<android.support.v7.widget.RecyclerView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/recycler_view_quotes_LV"></android.support.v7.widget.RecyclerView>
+    android:background="@color/mainBackground">
+
+    <!-- our toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:title="asdfsadfsdaa"
+        android:titleTextColor="@color/dark_gray"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <include layout="@layout/control_toolbar"
+        android:id="@+id/control_toolbar"/>
+
+
+    <android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recycler_view_quotes_LV"
+    android:visibility="visible"
+        android:background="@drawable/ic_vivekananda_bg"
+        android:alpha="0.5"></android.support.v7.widget.RecyclerView>
+
+<TextView
+    android:id="@+id/no_fav_txt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="There are no favourites quotes"
+    android:gravity="center"
+    android:visibility="gone"/>
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/view_pager_tabs"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<android.support.v4.view.PagerTabStrip-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/dark_gray">-->
+
+        <!--</android.support.v4.view.PagerTabStrip>-->
+
+    <!--</android.support.v4.view.ViewPager>-->
+    <!--<android.support.v7.widget.ScrollingTabContainerView.TabView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+    <!--</android.support.v7.widget.ScrollingTabContainerView.TabView>-->
 </LinearLayout>

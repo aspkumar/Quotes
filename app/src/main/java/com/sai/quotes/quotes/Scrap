@@ -1,0 +1,275 @@
+ <!-- our toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:title="asdfsadfsdaa"
+        android:titleTextColor="@color/dark_gray"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <include layout="@layout/control_toolbar"
+        android:id="@+id/control_toolbar"/>
+
+
+        // to draws vertical linies between views
+          <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black"
+                    android:layout_toRightOf="@+id/text_inc_dec_icon"
+                    />
+
+
+
+
+
+
+
+
+     //brucelee sample images imgru
+     http://i.imgur.com/kfYMh7D.jpg
+     http://i.imgur.com/lmFR5Xk.jpg
+     http://i.imgur.com/kfYMh7D.jpg
+     http://i.imgur.com/JpONpAA.jpg
+     http://i.imgur.com/kfYMh7D.jpg
+
+
+
+     ///picass image loading
+      Transformation transformation = new Transformation() {
+
+                 @Override
+                 public Bitmap transform(Bitmap source) {
+                     int targetWidth = 500;
+
+                     double aspectRatio = (double) source.getHeight() / (double) source.getWidth();
+                     int targetHeight = (int) (targetWidth * aspectRatio);
+                     Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
+                     if (result != source) {
+                         // Same bitmap is returned if sizes are the same
+                         source.recycle();
+                     }
+                     return result;
+                 }
+
+                 @Override
+                 public String key() {
+                     return "transformation" + " desiredWidth";
+                 }
+             };
+
+     //        mMessage_pic_url = message_pic_url;
+
+             Picasso.with(getContext())
+                     .load(selectedPOJO.get(mPageNumber).getUrl())
+                     .error(android.R.drawable.stat_notify_error)
+                     .transform(transformation)
+                     .into(imageView, new Callback() {
+                         @Override
+                         public void onSuccess() {
+                             bottomSheet.setVisibility(View.VISIBLE);
+     //                        holder.progressBar_picture.setVisibility(View.GONE);
+                             Toast.makeText(getContext(),"onsucess",Toast.LENGTH_SHORT).show();
+                         }
+
+                         @Override
+                         public void onError() {
+                             bottomSheet.setVisibility(View.GONE);
+                             Toast.makeText(getContext(),"onerror",Toast.LENGTH_SHORT).show();
+                             Log.e("picasoerror", "error");
+     //                        holder.progressBar_picture.setVisibility(View.GONE);
+                         }
+                     });
+
+
+
+
+
+   ///removed seekbar
+   //fragment_screen_slide_page
+     <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/control_toolbar_fullscreen"
+               android:id="@+id/relativeLayout"
+               android:visibility="visible">
+               <SeekBar
+                   android:id="@+id/seekBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toLeftOf="@+id/textval"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="sadfsdfsddsfsdfsdfasd"
+                   android:id="@+id/textval"
+                   android:gravity="center"
+                   android:layout_alignParentTop="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentEnd="true"
+                   android:maxLength="5"/>
+
+           </RelativeLayout>
+
+
+           //screenSlidePagerFragment
+           textSize = (ImageView) controlsView.findViewById(R.id.text_inc_dec_icon);
+                   textval= (TextView) rootView.findViewById(R.id.textval);
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+  if (textSizeSP != 0) {
+            quotesLargeTV.setTextSize(textSizeSP);
+            int val=(int) quotesLargeTV.getTextSize();
+
+            seekBar.setProgress(textSizeSP - 10);
+
+            int sl=(int) quotesLargeTV.getTextSize();
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        } else {
+            quotesLargeTV.setTextSize(16);
+            seekBar.setProgress(6);
+            seekBar.setMax(10);
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+        }
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                seekBar.setMax(10);
+                editor.remove("textSizeSP");
+                editor.commit();
+//                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
+                seekBar.setProgress(progress);
+                quotesLargeTV.setTextSize(progress + 15);
+                editor.putInt("textSizeSP", progress + 15);
+                editor.commit();
+                textval.setText(String.valueOf((int) quotesLargeTV.getTextSize()));
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+
+        ////////////
+        Gson gson = new Gson();
+
+        ArrayList<ListAdapterItemsSelected> mSelectedList = new ArrayList<ListAdapterItemsSelected>();
+        String jsonString = gson.toJson(mSelectedList);
+        SharedPreferences sp = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
+
+        //Save to SharedPreferences
+        sp.edit().putString("KEY", jsonString).commit();
+
+        //Get to SharedPreferences
+
+        //For default value, just to get no errors while getting no value from the SharedPreferences
+        String empty_list = gson.toJson(new ArrayList<ListAdapterItemsSelected>());
+
+        ArrayList<ListAdapterItemsSelected> mSelectedList = gson.fromJson(sp.getString("KEY", empty_list),
+                new TypeToken<ArrayList<ListAdapterItemsSelected>>() {
+                }.getType());
+
+
+
+                /// deleted in picture butto click main
+
+//                //retrofit
+//                //Creating an object of our api interface
+//                PictureInterface api = RetroClient.getApiService();
+//
+//                /**
+//                 * Calling JSON
+//                 */
+//                Call<ExamplPojo> call = api.getMyJson();
+//
+//                call.enqueue(new Callback<ExamplPojo>() {
+//                    @Override
+//                    public void onResponse(Call<ExamplPojo> call, Response<ExamplPojo> response) {
+//                        response.body();
+//                        urllink = response.body().getPictures();
+////                        if (mPageNumber < 6) {
+//////                    ((TextView) rootView.findViewById(R.id.textView)).setText(selctedarrayitems.get(mPageNumber).toString());
+////                            Picasso.with(getContext())
+////                                    .load(urllink.get(mPageNumber).getImage())
+////                                    .placeholder(R.drawable.heart_icon_red)
+////                                    .into(imageDisplay);
+////                            Picasso.with(getContext()).setLoggingEnabled(true);
+////                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ExamplPojo> call, Throwable t) {
+//
+//                    }
+//                });
+//                sharedpreferences = getSharedPreferences("mypreference", Context.MODE_PRIVATE);
+//                editor = sharedpreferences.edit();
+//                int position = 0;
+//                quotesarray = getResources().getStringArray(R.array.picturelinksarray);
+//                String sf = Arrays.toString(quotesarray);
+//                editor.putString("selectedarray", Arrays.toString(quotesarray));
+//                editor.commit();
+//                Intent quotesfull = new Intent(MainActivity.this, ScreenSlideActivity.class);
+//                quotesfull.putExtra("itemposition", position);
+//                quotesfull.putExtra("arrName", quotesarray);
+//                quotesfull.putExtra("arrLenght", quotesarray.length);
+//                startActivity(quotesfull);
+
+
+
+//Links for Images from imgur direct ling images
+http://i.imgur.com/AAyPdqa.jpg    - swamiji106...
+http://i.imgur.com/226Yz4d.jpg    - 71
+http://i.imgur.com/HFAjlgT.jpg    -105
+http://i.imgur.com/SzXWxb1.jpg    -85
+http://i.imgur.com/HNB87gy.jpg    -70
+http://i.imgur.com/eevzwUT.jpg    -3
+http://i.imgur.com/vZtzB0h.jpg    -60
+http://i.imgur.com/tjTLYpY.jpg    -87
+http://i.imgur.com/1DlbhlM.jpg    -97
+http://i.imgur.com/wvPPFBM.jpg    -48
+http://i.imgur.com/aIz5ij7.jpg    -32
+http://i.imgur.com/J4hhV8N.jpg    -77
+http://i.imgur.com/88xdJAG.jpg    -18
+http://i.imgur.com/OAdT6N7.jpg    -52
+http://i.imgur.com/FKGxDuY.jpg    -30
+http://i.imgur.com/vhlUQmg.jpg    -57
+http://i.imgur.com/eBRmEcl.jpg    -38
+http://i.imgur.com/x6lLDHh.jpg    -59
+http://i.imgur.com/6QboFQc.jpg    -22
+http://i.imgur.com/YvzPTAO.jpg    -31
+http://i.imgur.com/bSwhQgg.jpg    -23
+http://i.imgur.com/tbnizEt.jpg    -8
+http://i.imgur.com/4vlA2Zw.jpg    -15
+http://i.imgur.com/Bqkwhfi.jpg    -5
+http://i.imgur.com/WRSII1B.jpg    -14
+http://i.imgur.com/InNQcaM.jpg    -4
+http://i.imgur.com/zg1szwp.jpg    -11
+http://i.imgur.com/Yo6rxT4.jpg    -13
+http://i.imgur.com/ZqSKyNp.jpg    -2
+http://i.imgur.com/RWeB4VP.jpg    -12
+http://i.imgur.com/DCm7s6u.jpg    -9
+http://i.imgur.com/3JiLMDx.jpg    -7
+http://i.imgur.com/1Maealh.jpg    -10
+http://i.imgur.com/KxNUalC.jpg    -6
+http://i.imgur.com/w94m0Xz.jpg    -1
+
+
+addmob key: ca-app-pub-8947729659620707~4508544676
+Download the Google Mobile Ads SDK.
+Follow the SDK integration guide. Specify ad type, size and placement when you integrate the code.
+App ID: ca-app-pub-8947729659620707~4508544676
+Ad unit ID: ca-app-pub-8947729659620707/1716528679
