@@ -266,3 +266,10 @@ http://i.imgur.com/3JiLMDx.jpg    -7
 http://i.imgur.com/1Maealh.jpg    -10
 http://i.imgur.com/KxNUalC.jpg    -6
 http://i.imgur.com/w94m0Xz.jpg    -1
+
+
+addmob key: ca-app-pub-8947729659620707~4508544676
+Download the Google Mobile Ads SDK.
+Follow the SDK integration guide. Specify ad type, size and placement when you integrate the code.
+App ID: ca-app-pub-8947729659620707~4508544676
+Ad unit ID: ca-app-pub-8947729659620707/1716528679
