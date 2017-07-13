@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>RecyclerAdapterQuotes.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); font-style: italic; }
+.s3 { color: rgb(106,135,89); }
+.s4 { color: rgb(128,128,128); }
+.s5 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+RecyclerAdapterQuotes.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.sai.quotes.quotes</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.SharedPreferences</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.RecyclerView</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.LayoutInflater</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.ViewGroup</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.Arrays</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s2">/** 
+ * Created by DELL on 23-04-2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">RecyclerAdapterQuotes </span><span class="s0">extends </span><span class="s1">RecyclerView.Adapter&lt;RecyclerAdapterQuotes.QuotesVH&gt; { 
+ 
+    </span><span class="s0">private </span><span class="s1">Context context</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">String[] quotesarray</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">ArrayList&lt;String&gt; favouritearraySP</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">SharedPreferences sharedpreferences</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">SharedPreferences.Editor editor</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">String arrayName</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">Boolean expandrcollapseval</span><span class="s0">;</span><span class="s1"> 
+ 
+    </span><span class="s0">public </span><span class="s1">RecyclerAdapterQuotes(Context context</span><span class="s0">, </span><span class="s1">String[] quotesarray</span><span class="s0">, </span><span class="s1">String arrayName</span><span class="s0">, </span><span class="s1">Boolean expandrcollapseval) { 
+        </span><span class="s0">this</span><span class="s1">.context = context</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">this</span><span class="s1">.quotesarray = quotesarray</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">this</span><span class="s1">.arrayName = arrayName</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">this</span><span class="s1">.expandrcollapseval = expandrcollapseval</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+ 
+    @Override 
+    </span><span class="s0">public </span><span class="s1">QuotesVH onCreateViewHolder(ViewGroup parent</span><span class="s0">, int </span><span class="s1">viewType) { 
+ 
+        View itemView = LayoutInflater.from(parent.getContext()) 
+                .inflate(R.layout.item_quotes</span><span class="s0">, </span><span class="s1">parent</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        sharedpreferences = context.getSharedPreferences(</span><span class="s3">&quot;mypreference&quot;</span><span class="s0">, </span><span class="s1">Context.MODE_PRIVATE)</span><span class="s0">;</span><span class="s1"> 
+        editor = sharedpreferences.edit()</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s4">//        sharedpreferences.edit().clear();</span><span class="s1"> 
+</span><span class="s4">//        editor.commit();</span><span class="s1"> 
+ 
+ 
+        String selectedValue = sharedpreferences.getString(</span><span class="s3">&quot;storespValues&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        selectedValue = selectedValue.replace(</span><span class="s3">&quot;[&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        selectedValue = selectedValue.replace(</span><span class="s3">&quot;]&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        selectedValue = selectedValue.replace(</span><span class="s3">&quot;.,&quot;</span><span class="s0">, </span><span class="s3">&quot;.~&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        favouritearraySP = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+        </span><span class="s0">if </span><span class="s1">(selectedValue != </span><span class="s0">null</span><span class="s1">) { 
+            favouritearraySP.addAll(Arrays.asList(selectedValue.split(</span><span class="s3">&quot;</span><span class="s0">\\</span><span class="s3">s*~</span><span class="s0">\\</span><span class="s3">s*&quot;</span><span class="s1">)))</span><span class="s0">;</span><span class="s1"> 
+        } 
+        </span><span class="s0">return new </span><span class="s1">QuotesVH(itemView)</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onBindViewHolder(</span><span class="s0">final </span><span class="s1">QuotesVH holder</span><span class="s0">, final int </span><span class="s1">position) { 
+ 
+        </span><span class="s0">if </span><span class="s1">(expandrcollapseval) { 
+            holder.quoteItemTV.setMaxLines(</span><span class="s5">20</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+            holder.share.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+        } 
+        </span><span class="s0">else</span><span class="s1"> 
+            holder.share.setVisibility(View.GONE)</span><span class="s0">;</span><span class="s1"> 
+ 
+        holder.quoteItemTV.setText(quotesarray[position])</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">if </span><span class="s1">(favouritearraySP.contains(quotesarray[position])) { 
+ 
+            holder.heart_white.setVisibility(View.INVISIBLE)</span><span class="s0">;</span><span class="s1"> 
+            holder.heart_red.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            holder.heart_white.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+            holder.heart_red.setVisibility(View.INVISIBLE)</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+        holder.heart_white.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+</span><span class="s4">//                    one.get(position).setId(true);</span><span class="s1"> 
+                holder.heart_white.setVisibility(View.INVISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                holder.heart_red.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                favouritearraySP.add(quotesarray[position])</span><span class="s0">;</span><span class="s1"> 
+                editor.putString(</span><span class="s3">&quot;storespValues&quot;</span><span class="s0">, </span><span class="s1">favouritearraySP.toString())</span><span class="s0">;</span><span class="s1"> 
+                editor.commit()</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+        holder.heart_red.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                holder.heart_white.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                holder.heart_red.setVisibility(View.INVISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                favouritearraySP.remove(quotesarray[position])</span><span class="s0">;</span><span class="s1"> 
+                editor.putString(</span><span class="s3">&quot;storespValues&quot;</span><span class="s0">, </span><span class="s1">favouritearraySP.toString())</span><span class="s0">;</span><span class="s1"> 
+                editor.commit()</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+ 
+        holder.share.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                Intent sendIntent = </span><span class="s0">new </span><span class="s1">Intent()</span><span class="s0">;</span><span class="s1"> 
+                sendIntent.setAction(Intent.ACTION_SEND)</span><span class="s0">;</span><span class="s1"> 
+                sendIntent.putExtra(Intent.EXTRA_TEXT</span><span class="s0">,</span><span class="s1">quotesarray[position]+ </span><span class="s3">&quot;</span><span class="s0">\n\r</span><span class="s3">&quot;</span><span class="s1">+ </span><span class="s3">&quot;~Swami Vivekananda&quot; </span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                sendIntent.setType(</span><span class="s3">&quot;text/plain&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                context.startActivity(Intent.createChooser(sendIntent</span><span class="s0">,</span><span class="s1">quotesarray[position]))</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+        holder.quoteItemTV.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() { 
+            @Override 
+            </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+                String sf = Arrays.toString(quotesarray)</span><span class="s0">;</span><span class="s1"> 
+                editor.putString(</span><span class="s3">&quot;selectedarray&quot;</span><span class="s0">, </span><span class="s1">Arrays.toString(quotesarray))</span><span class="s0">;</span><span class="s1"> 
+                editor.commit()</span><span class="s0">;</span><span class="s1"> 
+                Intent quotesfull = </span><span class="s0">new </span><span class="s1">Intent(context</span><span class="s0">, </span><span class="s1">ScreenSlideActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                quotesfull.putExtra(</span><span class="s3">&quot;itemposition&quot;</span><span class="s0">, </span><span class="s1">position)</span><span class="s0">;</span><span class="s1"> 
+                quotesfull.putExtra(</span><span class="s3">&quot;arrName&quot;</span><span class="s0">, </span><span class="s1">quotesarray)</span><span class="s0">;</span><span class="s1"> 
+                quotesfull.putExtra(</span><span class="s3">&quot;arrLenght&quot;</span><span class="s0">, </span><span class="s1">quotesarray.length)</span><span class="s0">;</span><span class="s1"> 
+                context.startActivity(quotesfull)</span><span class="s0">;</span><span class="s1"> 
+            } 
+        })</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public int </span><span class="s1">getItemCount() { 
+        </span><span class="s0">return </span><span class="s1">quotesarray.length</span><span class="s0">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s0">public class </span><span class="s1">QuotesVH </span><span class="s0">extends </span><span class="s1">RecyclerView.ViewHolder { 
+        TextView quoteItemTV</span><span class="s0">;</span><span class="s1"> 
+        ImageView heart_red</span><span class="s0">, </span><span class="s1">heart_white</span><span class="s0">, </span><span class="s1">share</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">public </span><span class="s1">QuotesVH(View itemView) { 
+            </span><span class="s0">super</span><span class="s1">(itemView)</span><span class="s0">;</span><span class="s1"> 
+            quoteItemTV = (TextView) itemView.findViewById(R.id.list_quote_itemTV)</span><span class="s0">;</span><span class="s1"> 
+            heart_red = (ImageView) itemView.findViewById(R.id.heart_icon_red)</span><span class="s0">;</span><span class="s1"> 
+            heart_white = (ImageView) itemView.findViewById(R.id.heart_icon_white)</span><span class="s0">;</span><span class="s1"> 
+            share = (ImageView) itemView.findViewById(R.id.share_icon)</span><span class="s0">;</span><span class="s1"> 
+        } 
+    } 
+} 
+</span></pre>
+</body>
+</html>

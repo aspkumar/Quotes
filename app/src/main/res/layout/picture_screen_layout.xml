@@ -1,0 +1,134 @@
+<!--
+  Copyright 2012 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScreenSlideActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <!-- Dummy content. -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/image_view_pictures"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:src="@color/aqua"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/pictures_IV"
+                style="?android:textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginBottom="16dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/err_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Error In Loading Image"
+                android:textColor="@color/black"
+                android:visibility="gone" />
+
+            <ProgressBar
+                android:id="@+id/laoding_pg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#86000000"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/current_Item_value"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/gray"
+                android:gravity="right"
+                android:maxLength="6"
+                android:padding="10dp"
+                android:text="1/3"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/pictures_headingTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/current_Item_value"
+                android:layout_toStartOf="@+id/current_Item_value"
+                android:padding="10dp"
+                android:text="dflkjsadlkfnsdfklsdnfksdlfsdkfjsdlfmklm;lml;;l,l,,;ll;k"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/pictures_bodyTV"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:padding="16dp"
+            android:text="orem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget dignissim sem, non tristique magna. Nullam diam ante, consequat vitae libero sit amet, pretium interdum turpis. Fusce nisl sem, imperdiet ut commodo a, tincidunt vestibulum elit. Quisque sed ultricies tortor, convallis venenatis nunc. Praesent vitae sagittis elit. Aenean in posuere lacus. Donec congue ex dolor, id congue elit mattis at. Integer sed elit eget ligula scelerisque cursus.
+
+Morbi tristique magna risus, eget cursus justo tristique eu. Vivamus at tempus mauris. Suspendisse pulvinar lectus eget eros aliquam porttitor. Integer ligula odio, bibendum eget congue sit amet, blandit vitae ligula. Etiam congue justo eget felis imperdiet pharetra. Ut tincidunt mauris et ex eleifend, non ultricies nisi eleifend. Morbi quis lectus felis. Nullam blandit, turpis vel sollicitudin aliquam, felis risus cursus urna, non dictum odio diam nec mauris. Integer lacinia lobortis metus in vestibulum. Nam in libero lacus.
+
+Donec sit amet mattis nulla. Nam id rhoncus nulla, id tempor risus. Nulla consequat orci at mi hendrerit placerat. Pellentesque nec arcu sit amet mauris aliquam fringilla. Pellentesque ut fermentum lectus. Quisque dolor massa, sollicitudin in est eget, porttitor semper dui. Maecenas maximus leo est, lobortis pretium sem pretium nec. Nam et varius massa. Aenean posuere turpis id libero tristique, in vestibulum ex tincidunt. Nam id pulvinar elit, quis molestie nisl. Donec dui ex, sollicitudin vel vehicula id, auctor non velit. Mauris in libero et ante vehicula venenatis."
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,17 +1,22 @@
 package com.sai.quotes.quotes;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,8 +36,10 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
     View controlView;
     ImageView a2z, z2a, expand, collapse;
     private ArrayList<String> favouritearraySP;
+    private TextView nofav;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +48,14 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
         //Adding toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        toolbar.setTitle("dsfjsadlfasdf");
+        toolbar.setTitle("Favourites");
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+        nofav= (TextView) findViewById(R.id.no_fav_txt);
 
         Intent intent = getIntent();
         itemClicked = intent.getStringExtra("clickedcategory");
@@ -80,18 +92,24 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
         expand.setOnClickListener(this);
         collapse.setOnClickListener(this);
 
-
         Collections.sort(Arrays.asList(quotestopass), String.CASE_INSENSITIVE_ORDER);
+        recyclerViewQuotes = (RecyclerView) findViewById(R.id.recycler_view_quotes_LV);
+
+        if(quotestopass.length==1){
+            recyclerViewQuotes.setVisibility(View.GONE);
+            nofav.setVisibility(View.VISIBLE);
+        }
+        else {
 //        Collections.reverse(Arrays.asList(quotestopass));
 
-        recyclerViewQuotes = (RecyclerView) findViewById(R.id.recycler_view_quotes_LV);
-        RecyclerAdapterQuotes adapter = new RecyclerAdapterQuotes(this, quotestopass, arrayName, expandrcollapseval);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerViewQuotes.setLayoutManager(mLayoutManager);
-        recyclerViewQuotes.addItemDecoration(new SimpleDividerItemDecoration(this));
-        recyclerViewQuotes.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
+            RecyclerAdapterQuotes adapter = new RecyclerAdapterQuotes(this, quotestopass, arrayName, expandrcollapseval);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerViewQuotes.setLayoutManager(mLayoutManager);
+            recyclerViewQuotes.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+//            recyclerViewQuotes.addItemDecoration(new SimpleDividerItemDecoration(this));
+            recyclerViewQuotes.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -143,7 +161,8 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
                 RecyclerAdapterQuotes adapter = new RecyclerAdapterQuotes(this, quotestopass, arrayName, expandrcollapseval);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerViewQuotes.setLayoutManager(mLayoutManager);
-                recyclerViewQuotes.addItemDecoration(new SimpleDividerItemDecoration(this));
+                recyclerViewQuotes.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+//                recyclerViewQuotes.addItemDecoration(new SimpleDividerItemDecoration(this));
                 recyclerViewQuotes.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 //                Toast.makeText(getApplicationContext(),"toast mas",Toast.LENGTH_SHORT).show();
@@ -152,5 +171,21 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
 
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    finish();
     }
 }

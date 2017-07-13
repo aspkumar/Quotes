@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>MyFirebaseMessagingService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); font-style: italic; }
+.s3 { color: rgb(98,151,85); font-weight: bold; font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MyFirebaseMessagingService.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">/* 
+package com.sai.quotes.quotes; 
+ 
+import android.app.NotificationManager; 
+import android.app.PendingIntent; 
+import android.content.Context; 
+import android.content.Intent; 
+import android.media.RingtoneManager; 
+import android.net.Uri; 
+import android.support.v4.app.NotificationCompat; 
+import android.util.Log; 
+ 
+import com.google.firebase.messaging.FirebaseMessagingService; 
+import com.google.firebase.messaging.RemoteMessage; 
+ 
+*/</span><span class="s1"> 
+</span><span class="s2">/** 
+ * Created by NgocTri on 8/9/2016. 
+ */</span><span class="s0">/* 
+ 
+public class MyFirebaseMessagingService extends FirebaseMessagingService { 
+    private static final String TAG = &quot;MyFirebaseMsgService&quot;; 
+ 
+    @Override 
+    public void onMessageReceived(RemoteMessage remoteMessage) { 
+ 
+        Log.d(TAG, &quot;FROM:&quot; + remoteMessage.getFrom()); 
+ 
+        //Check if the message contains data 
+        if(remoteMessage.getData().size() &gt; 0) { 
+            Log.d(TAG, &quot;Message data: &quot; + remoteMessage.getData()); 
+        } 
+ 
+        //Check if the message contains notification 
+ 
+        if(remoteMessage.getNotification() != null) { 
+            Log.d(TAG, &quot;Mesage body:&quot; + remoteMessage.getNotification().getBody()); 
+            sendNotification(remoteMessage.getNotification().getBody()); 
+        } 
+    } 
+ 
+    */</span><span class="s1"> 
+</span><span class="s2">/** 
+     * Dispay the notification 
+     * </span><span class="s3">@param </span><span class="s2">body 
+     */</span><span class="s0">/* 
+ 
+    private void sendNotification(String body) { 
+ 
+        Intent intent = new Intent(this, MainActivity.class); 
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+ 
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0*/</span><span class="s1"> 
+</span><span class="s0">/*Request code*//* 
+, intent, PendingIntent.FLAG_ONE_SHOT); 
+        //Set sound of notification 
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); 
+ 
+        NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this) 
+                .setSmallIcon(R.mipmap.ic_launcher) 
+                .setContentTitle(&quot;Firebase Cloud Messaging&quot;) 
+                .setContentText(body) 
+                .setAutoCancel(true) 
+                .setSound(notificationSound) 
+                .setContentIntent(pendingIntent); 
+ 
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE); 
+        notificationManager.notify(0 */</span><span class="s1"> 
+</span><span class="s0">/*ID of notification*//* 
+, notifiBuilder.build()); 
+    } 
+} 
+*/</span><span class="s1"> 
+</span></pre>
+</body>
+</html>
