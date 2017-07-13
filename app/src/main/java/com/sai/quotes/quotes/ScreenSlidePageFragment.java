@@ -25,9 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +40,7 @@ public class ScreenSlidePageFragment extends Fragment {
 
 
     private ArrayList<String> student;
-    private TextView quotesLargeTV,currentItemValue;
+    private TextView quotesLargeTV, currentItemValue;
     private View controlsView;
     ImageView heartWhite, heartRed, shareImg;
     private SharedPreferences.Editor editor;
@@ -122,8 +120,12 @@ public class ScreenSlidePageFragment extends Fragment {
         heartRed = (ImageView) controlsView.findViewById(R.id.heart_icon_red);
         shareImg = (ImageView) controlsView.findViewById(R.id.share_icon);
         quotesLargeTV = (TextView) rootView.findViewById(R.id.textView);
-        currentItemValue= (TextView) rootView.findViewById(R.id.current_Item_value);
+        currentItemValue = (TextView) rootView.findViewById(R.id.current_Item_value);
 
+
+
+//        bg_fullpage.setImageResource(R.drawable.qoutes_fs_bg);
+//        bg_fullpage.setScaleType(ImageView.ScaleType.MATRIX);
 
         // Set the title view to show the page number.
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(
@@ -131,10 +133,19 @@ public class ScreenSlidePageFragment extends Fragment {
 
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(selctedarrayitems.get(mPageNumber).toString());
 
-        quotesLargeTV.setText("\""+selctedarrayitems.get(mPageNumber).toString()+"\"");
-        currentItemValue.setText(mPageNumber+1+"/"+String.valueOf(selctedarrayitems.size()));
+        quotesLargeTV.setText("\"" + selctedarrayitems.get(mPageNumber).toString() + "\"");
+        currentItemValue.setText(mPageNumber + 1 + "/" + String.valueOf(selctedarrayitems.size()));
 
-        final String currentItem=selctedarrayitems.get(mPageNumber).toString();
+//        quotesLargeTV.measure(0, 0);
+//        int a = quotesLargeTV.getMeasuredWidth();
+//        int b = quotesLargeTV.getMeasuredHeight();
+//        Toast.makeText(getActivity(), String.valueOf(a) + "," + String.valueOf(b), Toast.LENGTH_SHORT).show();
+//        bg_fullpage.getLayoutParams().width = a;
+//        bg_fullpage.getLayoutParams().height = b;
+//        bg_fullpage.setImageResource(R.drawable.qoutes_fs_bg);
+//        bg_fullpage.setScaleType(ImageView.ScaleType.MATRIX);
+
+        final String currentItem = selctedarrayitems.get(mPageNumber).toString();
 
         //heart image appearNCE and onclick action
 //        holder.quoteItemTV.setText(quotesarray[position]);
@@ -170,7 +181,6 @@ public class ScreenSlidePageFragment extends Fragment {
                 editor.commit();
             }
         });
-
 
 
         shareImg.setOnClickListener(new View.OnClickListener() {

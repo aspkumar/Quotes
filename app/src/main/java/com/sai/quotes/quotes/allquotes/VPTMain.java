@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.sai.quotes.quotes.R;
 
@@ -14,7 +15,7 @@ import com.sai.quotes.quotes.R;
  * Created by PrasannakumarA on 5/3/2017.
  */
 
-public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
+public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
 
     //This is our tablayout
@@ -25,6 +26,12 @@ public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelecte
 
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activty_vpt);
@@ -32,7 +39,11 @@ public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelecte
 
         //Adding toolbar to the activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Quotes");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         //Initializing the tablayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -73,5 +84,14 @@ public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelecte
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+      /*  Intent mainscreen=new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainscreen);*/
+        finish();
     }
 }

@@ -13,13 +13,21 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bgLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScreenSlideActivity">
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true">-->
 
 
     <!-- Dummy content. -->
@@ -27,16 +35,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:title="asdfsadfsdaa"
-            android:titleTextColor="@color/dark_gray"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:src="@color/aqua"
+            android:id="@+id/image_view_pictures"
+            android:visibility="gone"/>
 
         <include
             android:id="@+id/control_toolbar_fullscreen"
@@ -57,21 +64,63 @@
                 android:gravity="center"
                 android:text="sample text"
                 android:layout_below="@+id/control_toolbar_fullscreen"
+                android:background="@drawable/qoutes_fs_bg"
                 />
+
+
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1/3"
             android:maxLength="6"
             android:layout_marginRight="20dp"
-            android:padding="10dp"
+            android:padding="5dp"
             style="@style/Base.TextAppearance.AppCompat.Medium"
             android:id="@+id/current_Item_value"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:gravity="right"
-            />
+          android:background="@color/colorPrimary"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" />
+
     </RelativeLayout>
 
-</ScrollView>
+<!--</ScrollView>-->
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet1"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="250dp"
+        android:clipToPadding="true"
+        android:background="@android:color/holo_blue_bright"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:text="dflkjsadlkfnsdfklsdnfksdlfsdkfjsdlfk"
+            android:textAllCaps="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="orem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget dignissim sem, non tristique magna. Nullam diam ante, consequat vitae libero sit amet, pretium interdum turpis. Fusce nisl sem, imperdiet ut commodo a, tincidunt vestibulum elit. Quisque sed ultricies tortor, convallis venenatis nunc. Praesent vitae sagittis elit. Aenean in posuere lacus. Donec congue ex dolor, id congue elit mattis at. Integer sed elit eget ligula scelerisque cursus.
+
+Morbi tristique magna risus, eget cursus justo tristique eu. Vivamus at tempus mauris. Suspendisse pulvinar lectus eget eros aliquam porttitor. Integer ligula odio, bibendum eget congue sit amet, blandit vitae ligula. Etiam congue justo eget felis imperdiet pharetra. Ut tincidunt mauris et ex eleifend, non ultricies nisi eleifend. Morbi quis lectus felis. Nullam blandit, turpis vel sollicitudin aliquam, felis risus cursus urna, non dictum odio diam nec mauris. Integer lacinia lobortis metus in vestibulum. Nam in libero lacus.
+
+Donec sit amet mattis nulla. Nam id rhoncus nulla, id tempor risus. Nulla consequat orci at mi hendrerit placerat. Pellentesque nec arcu sit amet mauris aliquam fringilla. Pellentesque ut fermentum lectus. Quisque dolor massa, sollicitudin in est eget, porttitor semper dui. Maecenas maximus leo est, lobortis pretium sem pretium nec. Nam et varius massa. Aenean posuere turpis id libero tristique, in vestibulum ex tincidunt. Nam id pulvinar elit, quis molestie nisl. Donec dui ex, sollicitudin vel vehicula id, auctor non velit. Mauris in libero et ante vehicula venenatis."
+            android:padding="16dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

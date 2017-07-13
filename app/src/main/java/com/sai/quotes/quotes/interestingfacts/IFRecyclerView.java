@@ -1,0 +1,97 @@
+package com.sai.quotes.quotes.interestingfacts;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.sai.quotes.quotes.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by PrasannakumarA on 5/19/2017.
+ */
+
+public class IFRecyclerView extends RecyclerView.Adapter<IFRecyclerView.MyViewHolder> {
+
+    Context context;
+    ArrayList<InterestingFactsPOJO> dummyArray;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
+
+
+    public IFRecyclerView(Context context, ArrayList<InterestingFactsPOJO> dummyArray) {
+        this.context = context;
+        this.dummyArray = dummyArray;
+    }
+
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_recycler_view, parent, false);
+        sharedpreferences = context.getSharedPreferences("mypreference", Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+
+        holder.itemName.setText(dummyArray.get(position).getHeading().toString());
+        holder.numbersTV.setText(String.valueOf(position+1));
+
+//        String sf = Arrays.toString(quotesarray);
+//        editor.putString("selectedarray", Arrays.toString(quotesarray));
+//        editor.commit();
+
+
+        holder.itemName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Gson gson = new Gson();
+
+//                ArrayList<ListAdapterItemsSelected> mSelectedList = new ArrayList<ListAdapterItemsSelected>();
+                String jsonString = gson.toJson(dummyArray);
+//                SharedPreferences sp = context.getSharedPreferences("KEY", Context.MODE_PRIVATE);
+
+                //Save to SharedPreferences
+                editor.putString("selectedarray", jsonString).commit();
+
+
+//                String sf = Arrays.toString(quotesarray);
+//                editor.putString("selectedarray", Arrays.toString(quotesarray));
+                editor.commit();
+                Intent quotesfull = new Intent(context, IFScreenSlideActivity.class);
+                quotesfull.putExtra("itemposition", position);
+                quotesfull.putExtra("arrName", dummyArray);
+                quotesfull.putExtra("arrLenght", dummyArray.size());
+//                quotesfull.putParcelableArrayListExtra("dummy_array", dummyArray);
+                quotesfull.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(quotesfull);
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return dummyArray.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView itemName, numbersTV;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            itemName = (TextView) itemView.findViewById(R.id.list_item_name);
+            numbersTV = (TextView) itemView.findViewById(R.id.numbers_TV);
+        }
+    }
+}
