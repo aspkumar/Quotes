@@ -267,21 +267,72 @@ public class InterestingFactsMain extends AppCompatActivity {
                 "brilliant marksman. Swamiji could read their minds. He\n" +
                 "told them he had never in his life fired a shot before and\n" +
                 "that the secret of his success was concentration."));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
-        headandbody.add(new InterestingFactsPOJO("head","body"));
+        headandbody.add(new InterestingFactsPOJO("Meeting with J.N Tata","The story goes that Jamshedji Nusserwanji Tata was once, travelling to Germany (This excerpt is taken from the writings of Mr. Mohan Guruswamy). As he stood there, at the door of his First Class Cabin in the Steam-liner, he noticed a lot of activity on the lower decks of the Ship. On enquiring, he learnt that a great Indian Saint Shri Swami Vivekananda was on board the same ship.\n" +
+                "\n" +
+                "Out of genuine respect and curiosity J.N. Tata decided to pay a visit to the great saint. Swami Vivekananda had of-course heard about the respected industrialist. As the conversation grew J.N. Tata explained that he was on his way to Germany.\n" +
+                "\n" +
+                "“I have with me sacks of soil : From various parts of India. I am taking these samples of soil to Germany. I wish to know IF Iron can be extracted profitably from any of these districts.” said J.N. Tata to the Saint.\n" +
+                "\n" +
+                "To which Swami Vivekananda replied, “Well, Sir, Even IF these sacks contain Iron-rich soil, do you honestly believe that the Germans will tell you the TRUTH??? You must understand that No / NONE of the European Nations wish to see a Strong / Steel-Rich / Economically Independent India. The soil is probably rich in Iron-ore but the sad truth is all you will get from your enquiries across Europe is Disbelief and Pessimistic reactions.”\n" +
+                "\n" +
+                "Needless to say, having interacted with several Europeans J.N. Tata knew this to be true. Swami Vivekananda continued, “Why don’t you start an excellent / up-to-date Research Facility and College here in India??? Why don’t you train some good Indian Youngsters to identify soil and conduct these tests and find ways of profitably extracting metals??? It may seem like a wasteful; burdensome expenditure right now, but in the long run- It will save you many trips to Europe and you can have the assurance of knowing the Truth quickly- rather than taking multiple opinions due to Doubt”.\n" +
+                "\n" +
+                "As he could clearly sense J.N. Tata’s mood was in acquiescence he further elaborated, “Seek an audience with the Maharaja of Mysore Shri Krishnaraja Wodeyar IV.Though a subordinate of the British, he will definitely help you in every way he can. H.R.H. Wodeyar has been generous enough to sponsor my own trip to Chicago to attend the Parliament of Religions.\n" +
+                "\n" +
+                "By the by this is the story of the finest Education Institute of India, The Indian Institute of Science (IISc) , Bangalore commonly known as the Tata institute.\n" +
+                "23k Views · 2,666 Upvotes · View Timeline\n"));
 
-
+        headandbody.add(new InterestingFactsPOJO("with a White Professor","Once, a white professor, whose last name was Peters, disliked him intensely.\n" +
+                "\n" +
+                "One day, Mr. Peters was having lunch at the dining room when vivekananda came along with his tray and sat next to the professor.\n" +
+                "\n" +
+                "The professor said, \"Mr Vivekananda , you do not understand. A pig and a bird do not sit together to eat.\" Vivekanandji looked at him as a parent would a rude child and calmly replied, \"You do not worry professor. I'll fly away,\" and he went and sat at another table.\n" +
+                "\n" +
+                "Mr. Peters, reddened with rage, decided to take revenge.\n" +
+                "\n" +
+                "The next day in Class he posed the following question: \"Mr.Vivekanand , if you were walking down the street and found a package, and within was a bag of wisdom and another bag with money, which one would you take ?\"\n" +
+                "\n" +
+                "Without hesitating, Vivekanandji responded, \"The one with the money, of course.\"\n" +
+                "\n" +
+                "Mr. Peters , smiling sarcastically said, \"I, in your place, would have taken the wisdom.\"\n" +
+                "\n" +
+                "Swami Vivekanand shrugged and responded, \"Each one takes what he doesn't have.\"\n" +
+                "\n" +
+                "Mr. Peters, by this time was fit to be tied. So great was his anger that he wrote on Swami Vivekanand's exam sheet the word \"idiot\" and gave it to Swami Vivekanand . Vivekanandji took the exam sheet and sat down at his desk\n" +
+                "\n" +
+                "A few minutes later, Swami Vivekanand got up, went to the professor and told him in a dignified polite tone, \"Mr. Peters, you signed the sheet, but you did not give me the grade.”"));
+        headandbody.add(new InterestingFactsPOJO("Presence of Mind","Once Swami Vivekananda was traveling in a train in US, and as usual happened to be in his dhoti and attire. 3 girls were making fun of him and his dressing sense, and they also saw the expensive watch gifted by an Indian king to Swamiji and then they thought to prank him.\n" +
+                "\n" +
+                "So they told him to give them his watch or they will complain to cops that he was physically harrassing the girls, then Swamiji did a gesture through his hands and convinced them that he was deaf so they better give in the writing. As the girls gave the same thing in the writing Swamiji spoked now you can call the cops as I have a complaint to register."));
+        headandbody.add(new InterestingFactsPOJO("Black Dot with White Paper","Once Swami Vivekananda had a lecture to deliver at a college. So he wanted to give the lecture an interesting and inspiring start.\n" +
+                "\n" +
+                "So he took out a white sheet of paper and put it on the canvas and asked the students, “What do you see?”\n" +
+                "The students replied, “White Paper.”\n" +
+                "\n" +
+                "He then took a black pen and drew a black dot at the centre of the white sheet, and again asked the same question.\n" +
+                "The answer came: A Black Dot.\n" +
+                "\n" +
+                "He then explained that how easily it is to forget one’s all good deeds that he/she has done in his/her life, which was represented by the white sheet and resembled the good character of a person. The black dot resembled the bad deeds or immoral acts that a person does, which are the only things that the world sees afterwards.\n" +
+                "\n" +
+                "So, irrespective of how good the person is, if does things that are not right, they leave a mark on his character for a lifetime. So, it is of utmost importance to have a clean character."));
+        headandbody.add(new InterestingFactsPOJO("Other Incidents","1. Before going to america, swami went to meet his guru's wife- Sharadadevi.\n" +
+                "He considered her like his mother and sought blessing from her for his journey to America.\n" +
+                "Sharadadevi asked him to give him the knife. \n" +
+                "Swami gave one.\n" +
+                "Sharadadevi smiled and said, \" you are going to be successful in your voyage, my son. When I asked you to handover the knife, you kept the handle to my side and the edge to yours.\n" +
+                "This shows your compassion and care for others. You're someone who help other by suffering yourself.\""
+                +"\n"
+        +"2. Once a British asked Swami Vivekananda -\n" +
+                "\" Why can't you wear proper clothes to look like a gentleman?\"\n" +
+                "Swami Vivekananda smiled and said-\n" +
+                "\" In your culture, a tailor makes a gentleman; but, in our culture, Character makes gentleman.\"\n"
+        +"3. Before he left London, one of his British friends put\n" +
+                "this question to him : 'Swami, how do you like now your\n" +
+                "motherland after four years' experience of the luxurious,\n" +
+                "glorious, powerful West?' Swamiji said : 'India I loved\n" +
+                "before I came away. Now the very dust of India has\n" +
+                "become holy to me, the very air is now to me holy; it is\n" +
+                "now the holy land, the place of pilgrimage, the Tritha"));
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_interestingfacts);
