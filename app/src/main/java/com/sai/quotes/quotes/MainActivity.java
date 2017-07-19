@@ -17,10 +17,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.gson.Gson;
 import com.sai.quotes.quotes.allquotes.VPTMain;
 import com.sai.quotes.quotes.biography.BiographyMain;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Toolbar toolbar;
     Boolean boolvalue;
     private AdView mAdView;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -67,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAdView.loadAd(adRequest);
 
 
-
-
+// Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 //        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
 //
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             contentQOD.setText(qodarray[i1]);
             editor.commit();
         }
+        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
 
 
     }
@@ -169,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onBackPressed() {
         int count = getFragmentManager().getBackStackEntryCount();
@@ -200,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -207,12 +211,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.all_quotes_TV:
                 Intent intent = new Intent(MainActivity.this, VPTMain.class);
                 startActivity(intent);
+                mFirebaseAnalytics.logEvent("allquotes_click", null);
                 break;
             case R.id.category_TV:
                 final FragmentManager fm = getFragmentManager();
                 final FragmentTransaction ft = fm.beginTransaction();
-
-
                 toolbar.setVisibility(View.INVISIBLE);
                 layer.setVisibility(View.GONE);
                 layer1.setVisibility(View.GONE);
@@ -223,19 +226,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ft.replace(R.id.frame_layout_for_fragment, new ListFragment());
                 ft.addToBackStack(null);
                 ft.commit();
+                mFirebaseAnalytics.logEvent("category_click", null);
+
                 break;
             case R.id.boigraphyTV:
                 Intent bioIntent = new Intent(MainActivity.this, BiographyMain.class);
                 startActivity(bioIntent);
+                mFirebaseAnalytics.logEvent("biography_click", null);
                 break;
             case R.id.favouritesTV:
                 Intent favintent = new Intent(MainActivity.this, QuotesListActivity.class);
                 favintent.putExtra("clickedcategory", "favarray");
                 startActivity(favintent);
+                mFirebaseAnalytics.logEvent("favourites_click", null);
+
                 break;
             case R.id.interestingTV:
                 Intent interestingIntent = new Intent(MainActivity.this, InterestingFactsMain.class);
                 startActivity(interestingIntent);
+                mFirebaseAnalytics.logEvent("interstingfacts_click", null);
                 break;
             case R.id.picturesTV:
                 picheadandbody = new ArrayList<>();
@@ -324,6 +333,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //               Intent pictureintent=new Intent(getApplicationContext(),PicturesMain.class);
 //               pictureintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                startActivity(pictureintent);
+                mFirebaseAnalytics.logEvent("pictures_click", null);
                 break;
         }
     }

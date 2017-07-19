@@ -34,7 +34,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
 
     // GSON with Retrofit
     compile 'com.google.code.gson:gson:2.7'
@@ -45,14 +44,12 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     //firebase crash reporting and anlytics and messaging
-//    compile 'com.google.firebase:firebase-crash:10.2.1'
-//    compile 'com.google.firebase:firebase-messaging:10.2.1'
-//    compile 'com.google.firebase:firebase-core:11.0.1'
+    compile 'com.google.firebase:firebase-crash:11.0.1'
+    compile 'com.google.firebase:firebase-analytics:11.0.1'
+
 
     //adding google ads service
-    compile 'com.google.android.gms:play-services-ads:11.0.2'
+    compile 'com.google.android.gms:play-services-ads:11.0.1'
     testCompile 'junit:junit:4.12'
 }
-
-//firebase analytics
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
