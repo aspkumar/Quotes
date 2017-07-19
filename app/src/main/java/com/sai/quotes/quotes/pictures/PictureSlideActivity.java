@@ -28,8 +28,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.sai.quotes.quotes.R;
 import com.sai.quotes.quotes.interestingfacts.IFScreenSlidePageFragment;
+
+import java.util.Random;
 
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}
@@ -46,6 +52,8 @@ public class PictureSlideActivity extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
+    InterstitialAd mInterstitialAd;
+    private AdView mAdView;
 
 
     /**
@@ -74,7 +82,7 @@ public class PictureSlideActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int itemposition = intent.getIntExtra("itemposition", 0);
         String arrName = intent.getStringExtra("arrName");
-        int arrLenght=intent.getIntExtra("arrLenght",0);
+        int arrLenght = intent.getIntExtra("arrLenght", 0);
 //        ArrayList<InterestingFactsPOJO> arr=intent.getParcelableArrayListExtra("dummy_array");
 //        sharedpreferences = getSharedPreferences("mypreference", Context.MODE_PRIVATE);
 //        editor = sharedpreferences.edit();
@@ -86,13 +94,13 @@ public class PictureSlideActivity extends AppCompatActivity {
 
 
         //adding toolbar
-        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Pictures");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        NUM_PAGES=arrLenght;
+        NUM_PAGES = arrLenght;
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -109,7 +117,41 @@ public class PictureSlideActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         });
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstialadd_id));
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        // Load ads into Interstitial Ads
+        mInterstitialAd.loadAd(adRequest1);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+//                mInterstitialAd.show();
+                showInterstitial();
+
+            }
+        });
+
     }
+
+
+    private void showInterstitial() {
+        Random r = new Random();
+        if (mInterstitialAd.isLoaded()) {
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+
+                            mInterstitialAd.show();
+                            AdRequest adRequest = new AdRequest.Builder().build();
+                            mInterstitialAd.loadAd(adRequest);
+                        }
+                    },
+                    r.nextInt(7000 - 5000) + 5000);
+
+        }
+    }
+
+
 
   /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -176,8 +218,7 @@ public class PictureSlideActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

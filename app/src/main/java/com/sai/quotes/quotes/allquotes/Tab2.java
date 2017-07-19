@@ -59,7 +59,7 @@ public class Tab2 extends Fragment implements View.OnClickListener{
         arrayName = "strengthislifearray";
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_fragment);
-        strings = getResources().getStringArray(R.array.onetofiftyarray);
+        strings = getResources().getStringArray(R.array.fiftytohunarray);
 //        RecyclerViewAdapter adapaterListsFragment = new RecyclerViewAdapter(getActivity(), strings);
         RecyclerAdapterQuotes adapaterListsFragment=new RecyclerAdapterQuotes(getActivity(),strings,"onetofiftyarray",expandrcollapseval);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -80,18 +80,15 @@ public class Tab2 extends Fragment implements View.OnClickListener{
             case R.id.expand_icon:
             case R.id.collapse_icon:
 
-                Toast.makeText(getActivity(), "toast mas", Toast.LENGTH_SHORT).show();
 //                strings = getResources().getStringArray(R.array.onetofiftyarray);
                 if (v.getId() == R.id.a2z_icon) {
                     z2a.setVisibility(View.VISIBLE);
                     a2z.setVisibility(View.INVISIBLE);
                     Collections.reverse(Arrays.asList(strings));
-                    Toast.makeText(getActivity(), "toast mas", Toast.LENGTH_SHORT).show();
                 } else if (v.getId() == R.id.z2a_icon) {
                     z2a.setVisibility(View.INVISIBLE);
                     a2z.setVisibility(View.VISIBLE);
                     Collections.reverse(Arrays.asList(strings));
-                    Toast.makeText(getActivity(), "toast mas", Toast.LENGTH_SHORT).show();
                 }else if (v.getId()==R.id.expand_icon)
                 {
                     expand.setVisibility(View.INVISIBLE);

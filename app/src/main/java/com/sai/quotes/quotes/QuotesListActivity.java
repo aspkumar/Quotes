@@ -61,11 +61,81 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
         itemClicked = intent.getStringExtra("clickedcategory");
         if (itemClicked.equalsIgnoreCase("Self-Confidence")) {
             quotestopass = getResources().getStringArray(R.array.selfconfidencearray);
-            arrayName = "selfconfidencearray";
+            arrayName = "strengthislifearray";
+            toolbar.setTitle("Self-Confidence");
         } else if (itemClicked.equalsIgnoreCase("StrenghtisLife")) {
             quotestopass = getResources().getStringArray(R.array.strengthislifearray);
             arrayName = "strengthislifearray";
-        }else if (itemClicked.equalsIgnoreCase("favarray")){
+            toolbar.setTitle("StrenghtisLife");
+
+        }
+        else if (itemClicked.equalsIgnoreCase("BeFearless")) {
+            quotestopass = getResources().getStringArray(R.array.befearless);
+            arrayName = "befearless";
+            toolbar.setTitle("BeFearless");
+        } else if (itemClicked.equalsIgnoreCase("StrenghtofCharacter")) {
+            quotestopass = getResources().getStringArray(R.array.sternghtofcharacter);
+            arrayName = "sternghtofcharacter";
+            toolbar.setTitle("StrenghtofCharacter");
+        } else if (itemClicked.equalsIgnoreCase("Self-Responsibility")) {
+            quotestopass = getResources().getStringArray(R.array.selfresponsibility);
+            arrayName = "selfresponsibility";
+            toolbar.setTitle("Self-Responsibility");
+        } else if (itemClicked.equalsIgnoreCase("PositiveThinking")) {
+            quotestopass = getResources().getStringArray(R.array.positivethinking);
+            arrayName = "positivethinking";
+            toolbar.setTitle("PositiveThinking");
+        } else if (itemClicked.equalsIgnoreCase("ControlofMind")) {
+            quotestopass = getResources().getStringArray(R.array.controlofmind);
+            arrayName = "controlofmind";
+            toolbar.setTitle("ControlofMind");
+        } else if (itemClicked.equalsIgnoreCase("PowerofConcentration")) {
+            quotestopass = getResources().getStringArray(R.array.poewerofconcentration);
+            arrayName = "poewerofconcentration";
+            toolbar.setTitle("PowerofConcentration");
+        } else if (itemClicked.equalsIgnoreCase("PowerofThought")) {
+            quotestopass = getResources().getStringArray(R.array.powerofthought);
+            arrayName = "powerofthought";
+            toolbar.setTitle("PowerofThought");
+        } else if (itemClicked.equalsIgnoreCase("ArtofMeditation")) {
+            quotestopass = getResources().getStringArray(R.array.artofmeditation);
+            arrayName = "artofmeditation";
+            toolbar.setTitle("ArtofMeditation");
+        } else if (itemClicked.equalsIgnoreCase("ManifestYourDivinity")) {
+            quotestopass = getResources().getStringArray(R.array.manifestyourdivinity);
+            arrayName = "manifestyourdivinity";
+            toolbar.setTitle("ManifestYourDivinity");
+        } else if (itemClicked.equalsIgnoreCase("TrueEducation")) {
+            quotestopass = getResources().getStringArray(R.array.trueeducation);
+            arrayName = "trueeducation";
+            toolbar.setTitle("TrueEducation");
+        }
+        else if (itemClicked.equalsIgnoreCase("TrueWorship")) {
+            quotestopass = getResources().getStringArray(R.array.trueworship);
+            arrayName = "trueworship";
+            toolbar.setTitle("TrueWorship");
+        } else if (itemClicked.equalsIgnoreCase("SecretofWork")) {
+            quotestopass = getResources().getStringArray(R.array.secretofwork);
+            arrayName = "secretofwork";
+            toolbar.setTitle("SecretofWork");
+        } else if (itemClicked.equalsIgnoreCase("CallToTheYouth")) {
+            quotestopass = getResources().getStringArray(R.array.calltoyouth);
+            arrayName = "calltoyouth";
+            toolbar.setTitle("CallToTheYouth");
+        } else if (itemClicked.equalsIgnoreCase("EternalIndia")) {
+            quotestopass = getResources().getStringArray(R.array.eternalindia);
+            arrayName = "eternalindia";
+            toolbar.setTitle("EternalIndia");
+        } else if (itemClicked.equalsIgnoreCase("UniversalReligion")) {
+            quotestopass = getResources().getStringArray(R.array.universalreligion);
+            arrayName = "universalreligion";
+            toolbar.setTitle("UniversalReligion");
+        } else if (itemClicked.equalsIgnoreCase("OtherExhortations")) {
+            quotestopass = getResources().getStringArray(R.array.otherexhortions);
+            arrayName = "otherexhortions";
+            toolbar.setTitle("OtherExhortations");
+        }
+        else if (itemClicked.equalsIgnoreCase("favarray")){
             SharedPreferences sharedPreferences = getSharedPreferences("mypreference", Context.MODE_PRIVATE);
             String selectedValue = sharedPreferences.getString("storespValues", "");
             selectedValue = selectedValue.replace("[", "");
@@ -125,12 +195,10 @@ public class QuotesListActivity extends AppCompatActivity implements View.OnClic
                     z2a.setVisibility(View.VISIBLE);
                     a2z.setVisibility(View.INVISIBLE);
                     Collections.reverse(Arrays.asList(quotestopass));
-                    Toast.makeText(getApplicationContext(), "toast mas", Toast.LENGTH_SHORT).show();
                 } else if (v.getId() == R.id.z2a_icon) {
                     z2a.setVisibility(View.INVISIBLE);
                     a2z.setVisibility(View.VISIBLE);
                     Collections.reverse(Arrays.asList(quotestopass));
-                    Toast.makeText(getApplicationContext(), "toast mas", Toast.LENGTH_SHORT).show();
                 }else if (v.getId()==R.id.expand_icon)
                 {
                     expand.setVisibility(View.INVISIBLE);

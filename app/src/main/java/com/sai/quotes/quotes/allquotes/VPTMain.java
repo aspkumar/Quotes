@@ -49,9 +49,9 @@ public class VPTMain extends AppCompatActivity implements TabLayout.OnTabSelecte
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
         //Adding the tabs using addTab() method
-        tabLayout.addTab(tabLayout.newTab().setText("Tab1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab3"));
+        tabLayout.addTab(tabLayout.newTab().setText("1-80"));
+        tabLayout.addTab(tabLayout.newTab().setText("80-160"));
+        tabLayout.addTab(tabLayout.newTab().setText("160-240"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager

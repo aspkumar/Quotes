@@ -92,7 +92,6 @@ public class Tab1 extends Fragment implements View.OnClickListener{
             case R.id.expand_icon:
             case R.id.collapse_icon:
 
-                Toast.makeText(getActivity(), "toast mas", Toast.LENGTH_SHORT).show();
 //                strings = getResources().getStringArray(R.array.onetofiftyarray);
                 if (v.getId() == R.id.a2z_icon) {
                     z2a.setVisibility(View.VISIBLE);

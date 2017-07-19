@@ -58,7 +58,7 @@
             android:layout_marginBottom="16dp"
             android:text="sample text"
             android:textSize="18sp"
-            android:padding="3dp"
+            android:padding="5dp"
             android:textColor="@color/black"
             />
 

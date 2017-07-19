@@ -117,7 +117,9 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </RelativeLayout>
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <TextView
             android:id="@+id/pictures_bodyTV"
             android:layout_width="match_parent"
@@ -130,5 +132,6 @@ Morbi tristique magna risus, eget cursus justo tristique eu. Vivamus at tempus m
 Donec sit amet mattis nulla. Nam id rhoncus nulla, id tempor risus. Nulla consequat orci at mi hendrerit placerat. Pellentesque nec arcu sit amet mauris aliquam fringilla. Pellentesque ut fermentum lectus. Quisque dolor massa, sollicitudin in est eget, porttitor semper dui. Maecenas maximus leo est, lobortis pretium sem pretium nec. Nam et varius massa. Aenean posuere turpis id libero tristique, in vestibulum ex tincidunt. Nam id pulvinar elit, quis molestie nisl. Donec dui ex, sollicitudin vel vehicula id, auctor non velit. Mauris in libero et ante vehicula venenatis."
             android:textColor="@color/white"
             android:textSize="16sp" />
+</ScrollView>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

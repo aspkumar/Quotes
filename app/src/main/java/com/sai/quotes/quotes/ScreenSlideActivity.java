@@ -30,6 +30,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
+import java.util.Random;
+
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}
  * automatically plays such an animation when calling {@link ViewPager#setCurrentItem(int)}, there
@@ -62,6 +69,8 @@ public class ScreenSlideActivity extends AppCompatActivity {
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
+    InterstitialAd mInterstitialAd;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +115,41 @@ public class ScreenSlideActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         });
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstialadd_id));
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        // Load ads into Interstitial Ads
+        mInterstitialAd.loadAd(adRequest1);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+//                mInterstitialAd.show();
+                showInterstitial();
+
+            }
+        });
+
     }
+
+
+    private void showInterstitial() {
+        Random r = new Random();
+        if (mInterstitialAd.isLoaded()) {
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+
+                            mInterstitialAd.show();
+                            AdRequest adRequest = new AdRequest.Builder().build();
+                            mInterstitialAd.loadAd(adRequest);
+                        }
+                    },
+                    r.nextInt(7000 - 5000) + 5000);
+
+        }
+    }
+
+
 
   /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
