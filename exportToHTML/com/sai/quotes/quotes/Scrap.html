@@ -1,0 +1,287 @@
+<html>
+<head>
+<title>Scrap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(169,183,198); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Scrap</FONT>
+</center></TD></TR></TABLE>
+<pre>
+ <span class="s0">&lt;!-- our toolbar --&gt; 
+    &lt;android.support.v7.widget.Toolbar 
+        android:id=&quot;@+id/toolbar&quot; 
+        android:layout_width=&quot;match_parent&quot; 
+        android:layout_height=&quot;wrap_content&quot; 
+        android:background=&quot;?attr/colorPrimary&quot; 
+        android:minHeight=&quot;?attr/actionBarSize&quot; 
+        android:title=&quot;asdfsadfsdaa&quot; 
+        android:titleTextColor=&quot;@color/dark_gray&quot; 
+        android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot; 
+        app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;/&gt; 
+    &lt;include layout=&quot;@layout/control_toolbar&quot; 
+        android:id=&quot;@+id/control_toolbar&quot;/&gt; 
+ 
+ 
+        // to draws vertical linies between views 
+          &lt;View 
+                    android:layout_width=&quot;1dp&quot; 
+                    android:layout_height=&quot;match_parent&quot; 
+                    android:background=&quot;@android:color/black&quot; 
+                    android:layout_toRightOf=&quot;@+id/text_inc_dec_icon&quot; 
+                    /&gt; 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     //brucelee sample images imgru 
+     http://i.imgur.com/kfYMh7D.jpg 
+     http://i.imgur.com/lmFR5Xk.jpg 
+     http://i.imgur.com/kfYMh7D.jpg 
+     http://i.imgur.com/JpONpAA.jpg 
+     http://i.imgur.com/kfYMh7D.jpg 
+ 
+ 
+ 
+     ///picass image loading 
+      Transformation transformation = new Transformation() { 
+ 
+                 @Override 
+                 public Bitmap transform(Bitmap source) { 
+                     int targetWidth = 500; 
+ 
+                     double aspectRatio = (double) source.getHeight() / (double) source.getWidth(); 
+                     int targetHeight = (int) (targetWidth * aspectRatio); 
+                     Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false); 
+                     if (result != source) { 
+                         // Same bitmap is returned if sizes are the same 
+                         source.recycle(); 
+                     } 
+                     return result; 
+                 } 
+ 
+                 @Override 
+                 public String key() { 
+                     return &quot;transformation&quot; + &quot; desiredWidth&quot;; 
+                 } 
+             }; 
+ 
+     //        mMessage_pic_url = message_pic_url; 
+ 
+             Picasso.with(getContext()) 
+                     .load(selectedPOJO.get(mPageNumber).getUrl()) 
+                     .error(android.R.drawable.stat_notify_error) 
+                     .transform(transformation) 
+                     .into(imageView, new Callback() { 
+                         @Override 
+                         public void onSuccess() { 
+                             bottomSheet.setVisibility(View.VISIBLE); 
+     //                        holder.progressBar_picture.setVisibility(View.GONE); 
+                             Toast.makeText(getContext(),&quot;onsucess&quot;,Toast.LENGTH_SHORT).show(); 
+                         } 
+ 
+                         @Override 
+                         public void onError() { 
+                             bottomSheet.setVisibility(View.GONE); 
+                             Toast.makeText(getContext(),&quot;onerror&quot;,Toast.LENGTH_SHORT).show(); 
+                             Log.e(&quot;picasoerror&quot;, &quot;error&quot;); 
+     //                        holder.progressBar_picture.setVisibility(View.GONE); 
+                         } 
+                     }); 
+ 
+ 
+ 
+ 
+ 
+   ///removed seekbar 
+   //fragment_screen_slide_page 
+     &lt;RelativeLayout 
+               android:layout_width=&quot;match_parent&quot; 
+               android:layout_height=&quot;wrap_content&quot; 
+               android:layout_below=&quot;@+id/control_toolbar_fullscreen&quot; 
+               android:id=&quot;@+id/relativeLayout&quot; 
+               android:visibility=&quot;visible&quot;&gt; 
+               &lt;SeekBar 
+                   android:id=&quot;@+id/seekBar&quot; 
+                   android:layout_width=&quot;wrap_content&quot; 
+                   android:layout_height=&quot;wrap_content&quot; 
+                   android:layout_toLeftOf=&quot;@+id/textval&quot; 
+                   android:layout_alignParentLeft=&quot;true&quot; 
+                   android:layout_alignParentStart=&quot;true&quot; /&gt; 
+               &lt;TextView 
+                   android:layout_width=&quot;wrap_content&quot; 
+                   android:layout_height=&quot;wrap_content&quot; 
+                   android:text=&quot;sadfsdfsddsfsdfsdfasd&quot; 
+                   android:id=&quot;@+id/textval&quot; 
+                   android:gravity=&quot;center&quot; 
+                   android:layout_alignParentTop=&quot;true&quot; 
+                   android:layout_alignParentRight=&quot;true&quot; 
+                   android:layout_alignParentEnd=&quot;true&quot; 
+                   android:maxLength=&quot;5&quot;/&gt; 
+ 
+           &lt;/RelativeLayout&gt; 
+ 
+ 
+           //screenSlidePagerFragment 
+           textSize = (ImageView) controlsView.findViewById(R.id.text_inc_dec_icon); 
+                   textval= (TextView) rootView.findViewById(R.id.textval); 
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize())); 
+  if (textSizeSP != 0) { 
+            quotesLargeTV.setTextSize(textSizeSP); 
+            int val=(int) quotesLargeTV.getTextSize(); 
+ 
+            seekBar.setProgress(textSizeSP - 10); 
+ 
+            int sl=(int) quotesLargeTV.getTextSize(); 
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize())); 
+        } else { 
+            quotesLargeTV.setTextSize(16); 
+            seekBar.setProgress(6); 
+            seekBar.setMax(10); 
+            textval.setText(String.valueOf((int) quotesLargeTV.getTextSize())); 
+        } 
+ 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { 
+            @Override 
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { 
+                seekBar.setMax(10); 
+                editor.remove(&quot;textSizeSP&quot;); 
+                editor.commit(); 
+//                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show(); 
+                seekBar.setProgress(progress); 
+                quotesLargeTV.setTextSize(progress + 15); 
+                editor.putInt(&quot;textSizeSP&quot;, progress + 15); 
+                editor.commit(); 
+                textval.setText(String.valueOf((int) quotesLargeTV.getTextSize())); 
+ 
+            } 
+ 
+            @Override 
+            public void onStartTrackingTouch(SeekBar seekBar) { 
+ 
+            } 
+ 
+            @Override 
+            public void onStopTrackingTouch(SeekBar seekBar) { 
+ 
+            } 
+        }); 
+ 
+ 
+ 
+        //////////// 
+        Gson gson = new Gson(); 
+ 
+        ArrayList&lt;ListAdapterItemsSelected&gt; mSelectedList = new ArrayList&lt;ListAdapterItemsSelected&gt;(); 
+        String jsonString = gson.toJson(mSelectedList); 
+        SharedPreferences sp = context.getSharedPreferences(&quot;KEY&quot;, Context.MODE_PRIVATE); 
+ 
+        //Save to SharedPreferences 
+        sp.edit().putString(&quot;KEY&quot;, jsonString).commit(); 
+ 
+        //Get to SharedPreferences 
+ 
+        //For default value, just to get no errors while getting no value from the SharedPreferences 
+        String empty_list = gson.toJson(new ArrayList&lt;ListAdapterItemsSelected&gt;()); 
+ 
+        ArrayList&lt;ListAdapterItemsSelected&gt; mSelectedList = gson.fromJson(sp.getString(&quot;KEY&quot;, empty_list), 
+                new TypeToken&lt;ArrayList&lt;ListAdapterItemsSelected&gt;&gt;() { 
+                }.getType()); 
+ 
+ 
+ 
+                /// deleted in picture butto click main 
+ 
+//                //retrofit 
+//                //Creating an object of our api interface 
+//                PictureInterface api = RetroClient.getApiService(); 
+// 
+//                /** 
+//                 * Calling JSON 
+//                 */ 
+//                Call&lt;ExamplPojo&gt; call = api.getMyJson(); 
+// 
+//                call.enqueue(new Callback&lt;ExamplPojo&gt;() { 
+//                    @Override 
+//                    public void onResponse(Call&lt;ExamplPojo&gt; call, Response&lt;ExamplPojo&gt; response) { 
+//                        response.body(); 
+//                        urllink = response.body().getPictures(); 
+////                        if (mPageNumber &lt; 6) { 
+//////                    ((TextView) rootView.findViewById(R.id.textView)).setText(selctedarrayitems.get(mPageNumber).toString()); 
+////                            Picasso.with(getContext()) 
+////                                    .load(urllink.get(mPageNumber).getImage()) 
+////                                    .placeholder(R.drawable.heart_icon_red) 
+////                                    .into(imageDisplay); 
+////                            Picasso.with(getContext()).setLoggingEnabled(true); 
+////                        } 
+//                    } 
+// 
+//                    @Override 
+//                    public void onFailure(Call&lt;ExamplPojo&gt; call, Throwable t) { 
+// 
+//                    } 
+//                }); 
+//                sharedpreferences = getSharedPreferences(&quot;mypreference&quot;, Context.MODE_PRIVATE); 
+//                editor = sharedpreferences.edit(); 
+//                int position = 0; 
+//                quotesarray = getResources().getStringArray(R.array.picturelinksarray); 
+//                String sf = Arrays.toString(quotesarray); 
+//                editor.putString(&quot;selectedarray&quot;, Arrays.toString(quotesarray)); 
+//                editor.commit(); 
+//                Intent quotesfull = new Intent(MainActivity.this, ScreenSlideActivity.class); 
+//                quotesfull.putExtra(&quot;itemposition&quot;, position); 
+//                quotesfull.putExtra(&quot;arrName&quot;, quotesarray); 
+//                quotesfull.putExtra(&quot;arrLenght&quot;, quotesarray.length); 
+//                startActivity(quotesfull); 
+ 
+ 
+ 
+//Links for Images from imgur direct ling images 
+http://i.imgur.com/AAyPdqa.jpg    - swamiji106... 
+http://i.imgur.com/226Yz4d.jpg    - 71 
+http://i.imgur.com/HFAjlgT.jpg    -105 
+http://i.imgur.com/SzXWxb1.jpg    -85 
+http://i.imgur.com/HNB87gy.jpg    -70 
+http://i.imgur.com/eevzwUT.jpg    -3 
+http://i.imgur.com/vZtzB0h.jpg    -60 
+http://i.imgur.com/tjTLYpY.jpg    -87 
+http://i.imgur.com/1DlbhlM.jpg    -97 
+http://i.imgur.com/wvPPFBM.jpg    -48 
+http://i.imgur.com/aIz5ij7.jpg    -32 
+http://i.imgur.com/J4hhV8N.jpg    -77 
+http://i.imgur.com/88xdJAG.jpg    -18 
+http://i.imgur.com/OAdT6N7.jpg    -52 
+http://i.imgur.com/FKGxDuY.jpg    -30 
+http://i.imgur.com/vhlUQmg.jpg    -57 
+http://i.imgur.com/eBRmEcl.jpg    -38 
+http://i.imgur.com/x6lLDHh.jpg    -59 
+http://i.imgur.com/6QboFQc.jpg    -22 
+http://i.imgur.com/YvzPTAO.jpg    -31 
+http://i.imgur.com/bSwhQgg.jpg    -23 
+http://i.imgur.com/tbnizEt.jpg    -8 
+http://i.imgur.com/4vlA2Zw.jpg    -15 
+http://i.imgur.com/Bqkwhfi.jpg    -5 
+http://i.imgur.com/WRSII1B.jpg    -14 
+http://i.imgur.com/InNQcaM.jpg    -4 
+http://i.imgur.com/zg1szwp.jpg    -11 
+http://i.imgur.com/Yo6rxT4.jpg    -13 
+http://i.imgur.com/ZqSKyNp.jpg    -2 
+http://i.imgur.com/RWeB4VP.jpg    -12 
+http://i.imgur.com/DCm7s6u.jpg    -9 
+http://i.imgur.com/3JiLMDx.jpg    -7 
+http://i.imgur.com/1Maealh.jpg    -10 
+http://i.imgur.com/KxNUalC.jpg    -6 
+http://i.imgur.com/w94m0Xz.jpg    -1 
+</span></pre>
+</body>
+</html>

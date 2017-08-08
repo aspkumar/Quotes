@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>MyFirebaseInstanceIDService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MyFirebaseInstanceIDService.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">/* 
+package com.sai.quotes.quotes; 
+ 
+import android.util.Log; 
+ 
+import com.google.firebase.iid.FirebaseInstanceId; 
+import com.google.firebase.iid.FirebaseInstanceIdService; 
+ 
+*/</span><span class="s1"> 
+</span><span class="s2">/** 
+ * Created by NgocTri on 8/9/2016. 
+ */</span><span class="s0">/* 
+ 
+public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService { 
+ 
+    private static final String TAG = &quot;MyFirebaseInsIDService&quot;; 
+ 
+    @Override 
+    public void onTokenRefresh() { 
+        //Get updated token 
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken(); 
+        Log.d(TAG, &quot;New Token: &quot; + refreshedToken); 
+ 
+        //You can save the token into third party server to do anything you want 
+    } 
+} 
+*/</span><span class="s1"> 
+</span></pre>
+</body>
+</html>

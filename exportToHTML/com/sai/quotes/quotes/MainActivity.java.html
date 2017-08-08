@@ -1,0 +1,265 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(128,128,128); }
+.s3 { color: rgb(106,135,89); }
+.s4 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.sai.quotes.quotes</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android.app.FragmentManager</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.app.FragmentTransaction</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.Context</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.content.SharedPreferences</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.os.Build</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.annotation.RequiresApi</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v4.content.ContextCompat</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.Toolbar</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.FrameLayout</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.LinearLayout</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.RelativeLayout</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">com.google.gson.Gson</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.allquotes.VPTMain</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.biography.BiographyMain</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.interestingfacts.InterestingFactsMain</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.pictures.PictureSlideActivity</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.pictures.PicturesPOJO</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.retrofit.Picture</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java.text.SimpleDateFormat</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.Calendar</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.Random</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity </span><span class="s0">implements </span><span class="s1">View.OnClickListener { 
+    </span><span class="s0">private </span><span class="s1">TextView quotes</span><span class="s0">, </span><span class="s1">categories</span><span class="s0">, </span><span class="s1">biography</span><span class="s0">, </span><span class="s1">favourites</span><span class="s0">, </span><span class="s1">interesting</span><span class="s0">, </span><span class="s1">pictures</span><span class="s0">, </span><span class="s1">contentQOD</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">FrameLayout frameLayoutFragment</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">LinearLayout layer</span><span class="s0">, </span><span class="s1">layer1</span><span class="s0">, </span><span class="s1">layer2</span><span class="s0">, </span><span class="s1">layer3</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">RelativeLayout qodLayout</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">String[] qodarray</span><span class="s0">;</span><span class="s1"> 
+    String formattedDate</span><span class="s0">, </span><span class="s1">dateValue</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">int </span><span class="s1">randVal</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">String[] quotesarray</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">ArrayList&lt;String&gt; favouritearraySP</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">SharedPreferences sharedpreferences</span><span class="s0">;</span><span class="s1"> 
+    </span><span class="s0">private </span><span class="s1">SharedPreferences.Editor editor</span><span class="s0">;</span><span class="s1"> 
+    List&lt;Picture&gt; urllink</span><span class="s0">;</span><span class="s1"> 
+    String[] urllinks</span><span class="s0">;</span><span class="s1"> 
+    ArrayList&lt;PicturesPOJO&gt; picheadandbody</span><span class="s0">;</span><span class="s1"> 
+    Toolbar toolbar</span><span class="s0">;</span><span class="s1"> 
+    Boolean boolvalue</span><span class="s0">;</span><span class="s1"> 
+ 
+    @RequiresApi(api = Build.VERSION_CODES.N) 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span><span class="s1"> 
+        setContentView(R.layout.activity_main)</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+</span><span class="s2">//        FirebaseCrash.report(new Exception(&quot;My first Android non-fatal error&quot;));</span><span class="s1"> 
+</span><span class="s2">//</span><span class="s1"> 
+</span><span class="s2">//        //I'm also creating a log message, which we'll look at in more detail later//</span><span class="s1"> 
+</span><span class="s2">//        FirebaseCrash.log(&quot;MainActivity started&quot;);</span><span class="s1"> 
+ 
+        layer = (LinearLayout) findViewById(R.id.layer)</span><span class="s0">;</span><span class="s1"> 
+        layer1 = (LinearLayout) findViewById(R.id.layer1)</span><span class="s0">;</span><span class="s1"> 
+        layer2 = (LinearLayout) findViewById(R.id.layer2)</span><span class="s0">;</span><span class="s1"> 
+        layer3 = (LinearLayout) findViewById(R.id.layer3)</span><span class="s0">;</span><span class="s1"> 
+        frameLayoutFragment = (FrameLayout) findViewById(R.id.frame_layout_for_fragment)</span><span class="s0">;</span><span class="s1"> 
+        qodarray = getResources().getStringArray(R.array.qodarray)</span><span class="s0">;</span><span class="s1"> 
+ 
+        contentQOD = (TextView) findViewById(R.id.content_QOD)</span><span class="s0">;</span><span class="s1"> 
+        qodLayout = (RelativeLayout) findViewById(R.id.qod_layout)</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s2">//addding toolbar</span><span class="s1"> 
+        toolbar = (Toolbar) findViewById(R.id.toolbar)</span><span class="s0">;</span><span class="s1"> 
+        toolbar.setTitle(</span><span class="s3">&quot;Swami Vivekananda&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext()</span><span class="s0">, </span><span class="s1">R.color.white))</span><span class="s0">;</span><span class="s1"> 
+        setSupportActionBar(toolbar)</span><span class="s0">;</span><span class="s1"> 
+        getSupportActionBar().setIcon(R.mipmap.ic_app_icon)</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s2">//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);</span><span class="s1"> 
+ 
+        Intent result = getIntent()</span><span class="s0">;</span><span class="s1"> 
+        boolvalue= result.getBooleanExtra(</span><span class="s3">&quot;fragmentValue&quot;</span><span class="s0">, false</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s2">//dashboard items declaration</span><span class="s1"> 
+        quotes = (TextView) findViewById(R.id.all_quotes_TV)</span><span class="s0">;</span><span class="s1"> 
+        categories = (TextView) findViewById(R.id.category_TV)</span><span class="s0">;</span><span class="s1"> 
+        biography = (TextView) findViewById(R.id.boigraphyTV)</span><span class="s0">;</span><span class="s1"> 
+        favourites = (TextView) findViewById(R.id.favouritesTV)</span><span class="s0">;</span><span class="s1"> 
+        interesting = (TextView) findViewById(R.id.interestingTV)</span><span class="s0">;</span><span class="s1"> 
+        pictures = (TextView) findViewById(R.id.picturesTV)</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s2">//click listeners</span><span class="s1"> 
+        quotes.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        categories.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        biography.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        favourites.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        interesting.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        pictures.setOnClickListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+        Calendar calendar = Calendar.getInstance()</span><span class="s0">;</span><span class="s1"> 
+        SimpleDateFormat df = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s3">&quot;dd-MMM-yyyy&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        formattedDate = df.format(calendar.getTime())</span><span class="s0">;</span><span class="s1"> 
+        SharedPreferences sharedPreferences = getSharedPreferences(</span><span class="s3">&quot;mypreference&quot;</span><span class="s0">, </span><span class="s1">MODE_PRIVATE)</span><span class="s0">;</span><span class="s1"> 
+        SharedPreferences.Editor editor = sharedPreferences.edit()</span><span class="s0">;</span><span class="s1"> 
+        dateValue = sharedPreferences.getString(</span><span class="s3">&quot;dateVal&quot;</span><span class="s0">, </span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        randVal = sharedPreferences.getInt(</span><span class="s3">&quot;randVal&quot;</span><span class="s0">, </span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        Random r = </span><span class="s0">new </span><span class="s1">Random()</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">int </span><span class="s1">i1</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(dateValue == </span><span class="s0">null</span><span class="s1">) { 
+            dateValue = formattedDate</span><span class="s0">;</span><span class="s1"> 
+            editor.putString(</span><span class="s3">&quot;dateVal&quot;</span><span class="s0">, </span><span class="s1">dateValue)</span><span class="s0">;</span><span class="s1"> 
+            i1 = r.nextInt(qodarray.length) - </span><span class="s4">1</span><span class="s0">;</span><span class="s1"> 
+            editor.putInt(</span><span class="s3">&quot;randVal&quot;</span><span class="s0">, </span><span class="s1">i1)</span><span class="s0">;</span><span class="s1"> 
+            contentQOD.setText(qodarray[i1])</span><span class="s0">;</span><span class="s1"> 
+            editor.commit()</span><span class="s0">;</span><span class="s1"> 
+        } </span><span class="s0">else if </span><span class="s1">(dateValue.equals(formattedDate)) { 
+            contentQOD.setText(qodarray[randVal])</span><span class="s0">;</span><span class="s1"> 
+        } </span><span class="s0">else if </span><span class="s1">(!dateValue.equals(formattedDate)) { 
+            dateValue = formattedDate</span><span class="s0">;</span><span class="s1"> 
+            editor.putString(</span><span class="s3">&quot;dateVal&quot;</span><span class="s0">, </span><span class="s1">dateValue)</span><span class="s0">;</span><span class="s1"> 
+            i1 = r.nextInt(qodarray.length) - </span><span class="s4">1</span><span class="s0">;</span><span class="s1"> 
+            editor.putInt(</span><span class="s3">&quot;randVal&quot;</span><span class="s0">, </span><span class="s1">i1)</span><span class="s0">;</span><span class="s1"> 
+            contentQOD.setText(qodarray[i1])</span><span class="s0">;</span><span class="s1"> 
+            editor.commit()</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+ 
+ 
+ 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onBackPressed() { 
+        </span><span class="s0">int </span><span class="s1">count = getFragmentManager().getBackStackEntryCount()</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">if </span><span class="s1">(count == </span><span class="s4">1</span><span class="s1">) { 
+            </span><span class="s0">super</span><span class="s1">.onBackPressed()</span><span class="s0">;</span><span class="s1"> 
+ 
+         </span><span class="s2">/*   frameLayoutFragment.setVisibility(View.GONE); 
+            layer.setVisibility(View.VISIBLE); 
+            layer1.setVisibility(View.VISIBLE); 
+            layer2.setVisibility(View.VISIBLE); 
+//                layer3.setVisibility(View.GONE); 
+            toolbar.setVisibility(View.VISIBLE); 
+            qodLayout.setVisibility(View.VISIBLE);*/</span><span class="s1"> 
+            Intent intent = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext()</span><span class="s0">, </span><span class="s1">MainActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)</span><span class="s0">;</span><span class="s1"> 
+            startActivity(intent)</span><span class="s0">;</span><span class="s1"> 
+            </span><span class="s2">//additional code</span><span class="s1"> 
+        } </span><span class="s0">else </span><span class="s1">{ 
+            getFragmentManager().popBackStack()</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s2">//            finish();</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">if </span><span class="s1">(count == </span><span class="s4">0 </span><span class="s1">) { 
+            finish()</span><span class="s0">;</span><span class="s1"> 
+ 
+        } 
+ 
+    } 
+ 
+ 
+    @Override 
+    </span><span class="s0">public void </span><span class="s1">onClick(View v) { 
+        </span><span class="s0">int </span><span class="s1">id = v.getId()</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">switch </span><span class="s1">(id) { 
+            </span><span class="s0">case </span><span class="s1">R.id.all_quotes_TV: 
+                Intent intent = </span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this, </span><span class="s1">VPTMain.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                startActivity(intent)</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">R.id.category_TV: 
+                </span><span class="s0">final </span><span class="s1">FragmentManager fm = getFragmentManager()</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">final </span><span class="s1">FragmentTransaction ft = fm.beginTransaction()</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+                toolbar.setVisibility(View.INVISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                layer.setVisibility(View.GONE)</span><span class="s0">;</span><span class="s1"> 
+                layer1.setVisibility(View.GONE)</span><span class="s0">;</span><span class="s1"> 
+                layer2.setVisibility(View.GONE)</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s2">//                layer3.setVisibility(View.GONE);</span><span class="s1"> 
+                qodLayout.setVisibility(View.GONE)</span><span class="s0">;</span><span class="s1"> 
+                frameLayoutFragment.setVisibility(View.VISIBLE)</span><span class="s0">;</span><span class="s1"> 
+                ft.replace(R.id.frame_layout_for_fragment</span><span class="s0">, new </span><span class="s1">ListFragment())</span><span class="s0">;</span><span class="s1"> 
+                ft.addToBackStack(</span><span class="s0">null</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                ft.commit()</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">R.id.boigraphyTV: 
+                Intent bioIntent = </span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this, </span><span class="s1">BiographyMain.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                startActivity(bioIntent)</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">R.id.favouritesTV: 
+                Intent favintent = </span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this, </span><span class="s1">QuotesListActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                favintent.putExtra(</span><span class="s3">&quot;clickedcategory&quot;</span><span class="s0">, </span><span class="s3">&quot;favarray&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                startActivity(favintent)</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">R.id.interestingTV: 
+                Intent interestingIntent = </span><span class="s0">new </span><span class="s1">Intent(MainActivity.</span><span class="s0">this, </span><span class="s1">InterestingFactsMain.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                startActivity(interestingIntent)</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+            </span><span class="s0">case </span><span class="s1">R.id.picturesTV: 
+                picheadandbody = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span><span class="s1"> 
+                picheadandbody.add(</span><span class="s0">new </span><span class="s1">PicturesPOJO(</span><span class="s3">&quot;headdddd1&quot;</span><span class="s0">, </span><span class="s3">&quot;bodyyyy1&quot;</span><span class="s0">, </span><span class="s3">&quot;http://imgh.us/svn.jpg&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+                picheadandbody.add(</span><span class="s0">new </span><span class="s1">PicturesPOJO(</span><span class="s3">&quot;headdddd2&quot;</span><span class="s0">, </span><span class="s3">&quot;bodyyyy2&quot;</span><span class="s0">, </span><span class="s3">&quot;http://imgh.us/svn1.jpg&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+                picheadandbody.add(</span><span class="s0">new </span><span class="s1">PicturesPOJO(</span><span class="s3">&quot;headdddd3&quot;</span><span class="s0">, </span><span class="s3">&quot;bodyyyy3&quot;</span><span class="s0">, </span><span class="s3">&quot;http://imgh.us/svn2.jpg&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+                picheadandbody.add(</span><span class="s0">new </span><span class="s1">PicturesPOJO(</span><span class="s3">&quot;headdddd4&quot;</span><span class="s0">, </span><span class="s3">&quot;bodyyyy4&quot;</span><span class="s0">, </span><span class="s3">&quot;http://imgh.us/4_2359.jpg&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+                picheadandbody.add(</span><span class="s0">new </span><span class="s1">PicturesPOJO(</span><span class="s3">&quot;headdddd5&quot;</span><span class="s0">, </span><span class="s3">&quot;bodyyyy5&quot;</span><span class="s0">, </span><span class="s3">&quot;http://imgh.us/brueclee.jpg&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+                Gson gson = </span><span class="s0">new </span><span class="s1">Gson()</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+</span><span class="s2">//                ArrayList&lt;ListAdapterItemsSelected&gt; mSelectedList = new ArrayList&lt;ListAdapterItemsSelected&gt;();</span><span class="s1"> 
+                String jsonString = gson.toJson(picheadandbody)</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s2">//                SharedPreferences sp = context.getSharedPreferences(&quot;KEY&quot;, Context.MODE_PRIVATE);</span><span class="s1"> 
+                sharedpreferences = getSharedPreferences(</span><span class="s3">&quot;mypreference&quot;</span><span class="s0">, </span><span class="s1">Context.MODE_PRIVATE)</span><span class="s0">;</span><span class="s1"> 
+                editor = sharedpreferences.edit()</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s2">//Save to SharedPreferences</span><span class="s1"> 
+                editor.putString(</span><span class="s3">&quot;selectedarray&quot;</span><span class="s0">, </span><span class="s1">jsonString).commit()</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+</span><span class="s2">//                String sf = Arrays.toString(quotesarray);</span><span class="s1"> 
+</span><span class="s2">//                editor.putString(&quot;selectedarray&quot;, Arrays.toString(quotesarray));</span><span class="s1"> 
+</span><span class="s2">//                editor.commit();</span><span class="s1"> 
+                Intent pictureIntent = </span><span class="s0">new </span><span class="s1">Intent(getApplicationContext()</span><span class="s0">, </span><span class="s1">PictureSlideActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                pictureIntent.putExtra(</span><span class="s3">&quot;itemposition&quot;</span><span class="s0">, </span><span class="s4">0</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                pictureIntent.putExtra(</span><span class="s3">&quot;arrName&quot;</span><span class="s0">, </span><span class="s1">picheadandbody)</span><span class="s0">;</span><span class="s1"> 
+                pictureIntent.putExtra(</span><span class="s3">&quot;arrLenght&quot;</span><span class="s0">, </span><span class="s1">picheadandbody.size())</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s2">//                quotesfull.putParcelableArrayListExtra(&quot;dummy_array&quot;, dummyArray);</span><span class="s1"> 
+</span><span class="s2">//                pictureIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><span class="s1"> 
+                startActivity(pictureIntent)</span><span class="s0">;</span><span class="s1"> 
+ 
+ 
+</span><span class="s2">//               Intent pictureintent=new Intent(getApplicationContext(),PicturesMain.class);</span><span class="s1"> 
+</span><span class="s2">//               pictureintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><span class="s1"> 
+</span><span class="s2">//                startActivity(pictureintent);</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+        } 
+    } 
+ 
+ 
+} 
+ 
+</span></pre>
+</body>
+</html>

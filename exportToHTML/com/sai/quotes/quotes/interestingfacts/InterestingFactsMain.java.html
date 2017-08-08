@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>InterestingFactsMain.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(98,151,85); font-style: italic; }
+.s3 { color: rgb(106,135,89); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+InterestingFactsMain.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.sai.quotes.quotes.interestingfacts</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">android.os.Build</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.annotation.Nullable</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.annotation.RequiresApi</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.DividerItemDecoration</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.LinearLayoutManager</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.RecyclerView</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.support.v7.widget.Toolbar</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">android.view.MenuItem</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">com.sai.quotes.quotes.R</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s2">/** 
+ * Created by PrasannakumarA on 5/19/2017. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">InterestingFactsMain </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+    ArrayList&lt;InterestingFactsPOJO&gt; headandbody</span><span class="s0">;</span><span class="s1"> 
+    RecyclerView mRecyclerView</span><span class="s0">;</span><span class="s1"> 
+ 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN) 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(@Nullable Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span><span class="s1"> 
+        setContentView(R.layout.activity_interestingfacts)</span><span class="s0">;</span><span class="s1"> 
+        headandbody = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span><span class="s1"> 
+ 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar)</span><span class="s0">;</span><span class="s1"> 
+        toolbar.setTitle(</span><span class="s3">&quot;Interesting Facts&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        setSupportActionBar(toolbar)</span><span class="s0">;</span><span class="s1"> 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+        headandbody.add(</span><span class="s0">new </span><span class="s1">InterestingFactsPOJO(</span><span class="s3">&quot;Heading1&quot;</span><span class="s0">, </span><span class="s3">&quot;booooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;oooooooooooooooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+        headandbody.add(</span><span class="s0">new </span><span class="s1">InterestingFactsPOJO(</span><span class="s3">&quot;Heading2&quot;</span><span class="s0">, </span><span class="s3">&quot;booooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;oooooooooooooooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+        headandbody.add(</span><span class="s0">new </span><span class="s1">InterestingFactsPOJO(</span><span class="s3">&quot;Heading3&quot;</span><span class="s0">, </span><span class="s3">&quot;booooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;oooooooooooooooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+        headandbody.add(</span><span class="s0">new </span><span class="s1">InterestingFactsPOJO(</span><span class="s3">&quot;Heading4&quot;</span><span class="s0">, </span><span class="s3">&quot;booooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;oooooooooooooooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+        headandbody.add(</span><span class="s0">new </span><span class="s1">InterestingFactsPOJO(</span><span class="s3">&quot;Heading5&quot;</span><span class="s0">, </span><span class="s3">&quot;booooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;oooooooooooooooooooooooooooooooooooooooo&quot; </span><span class="s1">+ 
+                </span><span class="s3">&quot;0ooooooo00000000000000000000000000ddddddddddddddddyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy&quot;</span><span class="s1">))</span><span class="s0">;</span><span class="s1"> 
+ 
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_interestingfacts)</span><span class="s0">;</span><span class="s1"> 
+        IFRecyclerView adapter = </span><span class="s0">new </span><span class="s1">IFRecyclerView(getApplicationContext()</span><span class="s0">, </span><span class="s1">headandbody)</span><span class="s0">;</span><span class="s1"> 
+        RecyclerView.LayoutManager layoutManager = </span><span class="s0">new </span><span class="s1">LinearLayoutManager(getApplicationContext())</span><span class="s0">;</span><span class="s1"> 
+        mRecyclerView.setLayoutManager(layoutManager)</span><span class="s0">;</span><span class="s1"> 
+        mRecyclerView.setBackgroundResource(R.drawable.paragraphbg)</span><span class="s0">;</span><span class="s1"> 
+        mRecyclerView.setAdapter(adapter)</span><span class="s0">;</span><span class="s1"> 
+        mRecyclerView.addItemDecoration(</span><span class="s0">new </span><span class="s1">DividerItemDecoration(getApplicationContext()</span><span class="s0">, </span><span class="s1">DividerItemDecoration.VERTICAL))</span><span class="s0">;</span><span class="s1"> 
+        adapter.notifyDataSetChanged()</span><span class="s0">;</span><span class="s1"> 
+ 
+    } 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item) { 
+        </span><span class="s0">switch </span><span class="s1">(item.getItemId()) { 
+            </span><span class="s0">case </span><span class="s1">android.R.id.home: 
+                finish()</span><span class="s0">;</span><span class="s1"> 
+                </span><span class="s0">break;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">return super</span><span class="s1">.onOptionsItemSelected(item)</span><span class="s0">;</span><span class="s1"> 
+    } 
+} 
+</span></pre>
+</body>
+</html>

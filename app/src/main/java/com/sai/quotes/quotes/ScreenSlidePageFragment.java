@@ -24,9 +24,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,8 +40,14 @@ public class ScreenSlidePageFragment extends Fragment {
 
 
     private ArrayList<String> student;
-    private SeekBar seekBar, seekBarDiscrete;
-    TextView quotesLargeTV;
+    private TextView quotesLargeTV, currentItemValue;
+    private View controlsView;
+    ImageView heartWhite, heartRed, shareImg;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private String selectedarray;
+    private ArrayList<String> favouritearraySP;
+
     /**
      * The argument key for the page number this fragment represents.
      */
@@ -78,8 +83,9 @@ public class ScreenSlidePageFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("mypreference", Context.MODE_PRIVATE);
-        String selectedarray = sharedPreferences.getString("selectedarray", "");
+        sharedPreferences = getContext().getSharedPreferences("mypreference", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        selectedarray = sharedPreferences.getString("selectedarray", "");
         selectedarray = selectedarray.replace("[", "");
         selectedarray = selectedarray.replace("]", "");
         selectedarray = selectedarray.replace(".,", ".~");
@@ -90,37 +96,36 @@ public class ScreenSlidePageFragment extends Fragment {
 
         }
 
+
+        String selectedValue = sharedPreferences.getString("storespValues", "");
+        selectedValue = selectedValue.replace("[", "");
+        selectedValue = selectedValue.replace("]", "");
+        selectedValue = selectedValue.replace(".,", ".~");
+        favouritearraySP = new ArrayList<>();
+
+
+        if (selectedValue != null) {
+            favouritearraySP.addAll(Arrays.asList(selectedValue.split("\\s*~\\s*")));
+        }
+
 //        String[] arraytodisplay=getResources().getStringArray(R.array.arr);
 
-        int a = 1;
+//        int a = 1;
 
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_screen_slide_page, container, false);
+        controlsView = rootView.findViewById(R.id.control_toolbar_fullscreen);
+        heartWhite = (ImageView) controlsView.findViewById(R.id.heart_icon_white);
+        heartRed = (ImageView) controlsView.findViewById(R.id.heart_icon_red);
+        shareImg = (ImageView) controlsView.findViewById(R.id.share_icon);
+        quotesLargeTV = (TextView) rootView.findViewById(R.id.textView);
+        currentItemValue = (TextView) rootView.findViewById(R.id.current_Item_value);
 
 
-        seekBar = (SeekBar) rootView.findViewById(R.id.seekBar);
-        quotesLargeTV= (TextView) rootView.findViewById(R.id.textView);
-        seekBar.setProgress(6);
-        seekBar.setMax(20);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Toast.makeText(getActivity(), String.valueOf(progress), Toast.LENGTH_SHORT).show();
-                quotesLargeTV.setTextSize(progress+10);
 
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
+//        bg_fullpage.setImageResource(R.drawable.qoutes_fs_bg);
+//        bg_fullpage.setScaleType(ImageView.ScaleType.MATRIX);
 
         // Set the title view to show the page number.
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(
@@ -128,19 +133,66 @@ public class ScreenSlidePageFragment extends Fragment {
 
 //        ((TextView) rootView.findViewById(android.R.id.text1)).setText(selctedarrayitems.get(mPageNumber).toString());
 
-        quotesLargeTV.setText(selctedarrayitems.get(mPageNumber).toString());
-        rootView.findViewById(R.id.share_btn).setOnClickListener(new View.OnClickListener() {
+        quotesLargeTV.setText("\"" + selctedarrayitems.get(mPageNumber).toString() + "\"");
+        currentItemValue.setText(mPageNumber + 1 + "/" + String.valueOf(selctedarrayitems.size()));
+
+//        quotesLargeTV.measure(0, 0);
+//        int a = quotesLargeTV.getMeasuredWidth();
+//        int b = quotesLargeTV.getMeasuredHeight();
+//        Toast.makeText(getActivity(), String.valueOf(a) + "," + String.valueOf(b), Toast.LENGTH_SHORT).show();
+//        bg_fullpage.getLayoutParams().width = a;
+//        bg_fullpage.getLayoutParams().height = b;
+//        bg_fullpage.setImageResource(R.drawable.qoutes_fs_bg);
+//        bg_fullpage.setScaleType(ImageView.ScaleType.MATRIX);
+
+        final String currentItem = selctedarrayitems.get(mPageNumber).toString();
+
+        //heart image appearNCE and onclick action
+//        holder.quoteItemTV.setText(quotesarray[position]);
+        if (favouritearraySP.contains(currentItem)) {
+
+            heartWhite.setVisibility(View.INVISIBLE);
+            heartRed.setVisibility(View.VISIBLE);
+        } else {
+            heartWhite.setVisibility(View.VISIBLE);
+            heartRed.setVisibility(View.INVISIBLE);
+        }
+
+        heartWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-                sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, selctedarrayitems.get(mPageNumber).toString()));
+//                    one.get(position).setId(true);
+                heartWhite.setVisibility(View.INVISIBLE);
+                heartRed.setVisibility(View.VISIBLE);
+                favouritearraySP.add(currentItem);
+                editor.putString("storespValues", favouritearraySP.toString());
+                editor.commit();
             }
         });
 
 
+        heartRed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                heartWhite.setVisibility(View.VISIBLE);
+                heartRed.setVisibility(View.INVISIBLE);
+                favouritearraySP.remove(currentItem);
+                editor.putString("storespValues", favouritearraySP.toString());
+                editor.commit();
+            }
+        });
+
+
+        shareImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, selctedarrayitems.get(mPageNumber).toString() + "\n\r" + "~Swami Vivekananda");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, selctedarrayitems.get(mPageNumber).toString()));
+            }
+        });
         return rootView;
     }
 

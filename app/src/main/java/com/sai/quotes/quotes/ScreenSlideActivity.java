@@ -23,11 +23,19 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
-import java.util.Arrays;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
+import java.util.Random;
 
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}
@@ -61,6 +69,8 @@ public class ScreenSlideActivity extends AppCompatActivity {
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
+    InterstitialAd mInterstitialAd;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +91,12 @@ public class ScreenSlideActivity extends AppCompatActivity {
         } else
             editor.putString("arrname", arrName);
 
+        //adding toolbar
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(arrName);
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NUM_PAGES=arrLenght;
 
@@ -99,7 +115,41 @@ public class ScreenSlideActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         });
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstialadd_id));
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        // Load ads into Interstitial Ads
+        mInterstitialAd.loadAd(adRequest1);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+//                mInterstitialAd.show();
+                showInterstitial();
+
+            }
+        });
+
     }
+
+
+    private void showInterstitial() {
+        Random r = new Random();
+        if (mInterstitialAd.isLoaded()) {
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+
+                            mInterstitialAd.show();
+                            AdRequest adRequest = new AdRequest.Builder().build();
+                            mInterstitialAd.loadAd(adRequest);
+                        }
+                    },
+                    r.nextInt(7000 - 5000) + 5000);
+
+        }
+    }
+
+
 
   /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,5 +212,16 @@ public class ScreenSlideActivity extends AppCompatActivity {
         public int getCount() {
             return NUM_PAGES;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

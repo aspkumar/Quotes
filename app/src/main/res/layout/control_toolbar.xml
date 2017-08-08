@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_expand"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/expand_icon"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_collapse"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/collapse_icon"
+            android:visibility="gone"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_z2a"
+            android:id="@+id/z2a_icon"
+            android:visibility="visible"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/expand_icon"
+            android:layout_toStartOf="@+id/expand_icon"
+            android:layout_marginRight="10dp"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_a2z"
+            android:id="@+id/a2z_icon"
+            android:visibility="gone"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/z2a_icon"
+            android:layout_alignStart="@+id/z2a_icon"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
