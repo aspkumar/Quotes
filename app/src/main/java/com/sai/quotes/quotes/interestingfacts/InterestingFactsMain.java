@@ -35,7 +35,7 @@ public class InterestingFactsMain extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        headandbody.add(new InterestingFactsPOJO("Master of Concentration", "Narendra was a master storyteller whose words" +
+        headandbody.add(new InterestingFactsPOJO("Master of Concentration", "Narendra(Swami Vivekananda) was a master storyteller whose words" +
                 "were as magnetic as his personality. When he spoke" +
                 "everyone listened with rapt attention forgetting their" +
                 "work. One day while in school, Narendra was talking" +
@@ -279,10 +279,9 @@ public class InterestingFactsMain extends AppCompatActivity {
                 "\n" +
                 "As he could clearly sense J.N. Tata’s mood was in acquiescence he further elaborated, “Seek an audience with the Maharaja of Mysore Shri Krishnaraja Wodeyar IV.Though a subordinate of the British, he will definitely help you in every way he can. H.R.H. Wodeyar has been generous enough to sponsor my own trip to Chicago to attend the Parliament of Religions.\n" +
                 "\n" +
-                "By the by this is the story of the finest Education Institute of India, The Indian Institute of Science (IISc) , Bangalore commonly known as the Tata institute.\n" +
-                "23k Views · 2,666 Upvotes · View Timeline\n"));
+                "By the by this is the story of the finest Education Institute of India, The Indian Institute of Science (IISc) , Bangalore commonly known as the Tata institute.\n"));
 
-        headandbody.add(new InterestingFactsPOJO("with a White Professor","Once, a white professor, whose last name was Peters, disliked him intensely.\n" +
+        headandbody.add(new InterestingFactsPOJO("Conversation with a White Professor","Once, a white professor, whose last name was Peters, disliked him intensely.\n" +
                 "\n" +
                 "One day, Mr. Peters was having lunch at the dining room when vivekananda came along with his tray and sat next to the professor.\n" +
                 "\n" +
@@ -301,10 +300,10 @@ public class InterestingFactsMain extends AppCompatActivity {
                 "Mr. Peters, by this time was fit to be tied. So great was his anger that he wrote on Swami Vivekanand's exam sheet the word \"idiot\" and gave it to Swami Vivekanand . Vivekanandji took the exam sheet and sat down at his desk\n" +
                 "\n" +
                 "A few minutes later, Swami Vivekanand got up, went to the professor and told him in a dignified polite tone, \"Mr. Peters, you signed the sheet, but you did not give me the grade.”"));
-        headandbody.add(new InterestingFactsPOJO("Presence of Mind","Once Swami Vivekananda was traveling in a train in US, and as usual happened to be in his dhoti and attire. 3 girls were making fun of him and his dressing sense, and they also saw the expensive watch gifted by an Indian king to Swamiji and then they thought to prank him.\n" +
+        headandbody.add(new InterestingFactsPOJO("Example of Presence of Mind","Once Swami Vivekananda was traveling in a train in US, and as usual happened to be in his dhoti and attire. 3 girls were making fun of him and his dressing sense, and they also saw the expensive watch gifted by an Indian king to Swamiji and then they thought to prank him.\n" +
                 "\n" +
                 "So they told him to give them his watch or they will complain to cops that he was physically harrassing the girls, then Swamiji did a gesture through his hands and convinced them that he was deaf so they better give in the writing. As the girls gave the same thing in the writing Swamiji spoked now you can call the cops as I have a complaint to register."));
-        headandbody.add(new InterestingFactsPOJO("Black Dot with White Paper","Once Swami Vivekananda had a lecture to deliver at a college. So he wanted to give the lecture an interesting and inspiring start.\n" +
+        headandbody.add(new InterestingFactsPOJO("Black spot on White Paper story","Once Swami Vivekananda had a lecture to deliver at a college. So he wanted to give the lecture an interesting and inspiring start.\n" +
                 "\n" +
                 "So he took out a white sheet of paper and put it on the canvas and asked the students, “What do you see?”\n" +
                 "The students replied, “White Paper.”\n" +
